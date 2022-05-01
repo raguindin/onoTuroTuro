@@ -8,6 +8,14 @@
 </main>
 
 <style>
+	:global(:root) {
+		--primary-g: hsl(105, 23%, 40%);
+		--primary-b: hsl(234, 21%, 48%);
+		--primary-r: hsl(7, 45%, 42%);
+		--primary-y: hsl(45, 78%, 65%);
+		--background: hsl(46, 100%, 93%);
+	}
+
 	main {
 		text-align: center;
 		padding: 1em;
