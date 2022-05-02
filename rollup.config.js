@@ -5,6 +5,9 @@ import livereload from 'rollup-plugin-livereload';
 import { terser } from 'rollup-plugin-terser';
 import css from 'rollup-plugin-css-only';
 import { sveltePreprocess } from 'svelte-preprocess/dist/autoProcess';
+import InlineSvg from 'rollup-plugin-inline-svg';
+import alias from '@rollup/plugin-alias';
+
 
 const production = !process.env.ROLLUP_WATCH;
 
@@ -28,6 +31,7 @@ function serve() {
 		}
 	};
 }
+
 
 export default {
 	input: 'src/main.js',
@@ -59,6 +63,31 @@ export default {
 			dedupe: ['svelte']
 		}),
 		commonjs(),
+
+		// Inline SVG for including SVG files inline
+		InlineSvg(),
+
+		// Aliases for src folders
+		alias({
+			entries: [
+				{
+					find: 'components',
+					replacement: '../components'
+				},
+				{
+					find: 'elements',
+					replacement: '../elements'
+				},
+				{
+					find: 'dependencies',
+					replacement: '../dependencies'
+				},
+				{
+					find: 'media',
+					replacement: '../media'
+				},
+			]
+		}),
 
 		// In dev mode, call `npm run start` once
 		// the bundle has been generated
