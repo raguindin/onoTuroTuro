@@ -10,6 +10,9 @@
 </main>
 
 <style global>
+	@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@800;900&family=PT+Serif:ital,wght@0,700;1,700&display=swap');
+
+
 	:root {
 		--primary-g: hsl(105, 23%, 40%);
 		--primary-b: hsl(234, 21%, 48%);
