@@ -21,6 +21,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" {viewBox} {height} {preserveAspectRatio} version="1.0">
 
     <path fill="#FFF" d="M-144-30h1728v360H-144z" />
+    
     <path fill="var(--background)" d="M-144-30h1728v360H-144z" />
 
     <path fill="var(--primary-g)"
