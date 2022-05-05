@@ -7,6 +7,7 @@ import css from 'rollup-plugin-css-only';
 import { sveltePreprocess } from 'svelte-preprocess/dist/autoProcess';
 import InlineSvg from 'rollup-plugin-inline-svg';
 import alias from '@rollup/plugin-alias';
+import json from '@rollup/plugin-json';
 
 
 const production = !process.env.ROLLUP_WATCH;
@@ -88,6 +89,7 @@ export default {
 				},
 			]
 		}),
+		json(),
 
 		// In dev mode, call `npm run start` once
 		// the bundle has been generated

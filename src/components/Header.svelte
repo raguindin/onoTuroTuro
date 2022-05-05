@@ -31,7 +31,7 @@
 
     div {
         display: inline-grid;
-        grid-template-columns: 1fr 50rem;
+        grid-template-columns: 1fr clamp(50%, 50em, 100%);
         grid-template-rows: 6em 6em 3em 3em;
         width: 100%;
     }
@@ -57,7 +57,7 @@
         margin: 0px;
         font-family: 'Mulish', sans-serif;
         text-transform: uppercase;
-        font-size: 4em;
+        font-size: clamp(1vw, 4em, 12vw);
         text-shadow: 2px 2px 8px black;
         font-weight: 800;
     }
@@ -67,7 +67,7 @@
         font-family: 'PT Serif', serif;
         grid-column: 2;
         grid-row: 3;
-        font-size: 2.4em;
+        font-size: clamp(1vw, 2.4em, 7vw);
         color: var(--text-g);
         font-style: italic;
         font-weight: 700;
