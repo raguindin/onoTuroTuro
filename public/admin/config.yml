@@ -10,18 +10,20 @@ collections:
  -  name: "menu"
     label: "Menu Items"
     extension: json
+    create: true
+    delete: true
     files: 
       - name: "combo-items"
         label: "Combo Plates"
         file: "public/content/combo-items.json"
         fields:
           - name: comboPlates
-            label: "comboPlates"
+            label: "Combo Plate"
             create: true
             delete: true
             widget: "list"
             fields:
               - {label: Name, name: name, widget: string}
-              - {label: Price, name: price, widget: number, min: 0}
-              - {label: Photo, name: src, widget: image, allow_multiple: false}
-        
+              - {label: "Price in $", name: price, widget: number, min: 0}
+              - {label: Photo, name: src, widget: image, pattern: ['\d+\.?\d*', "Must be a valid number, no $"], allow_multiple: false}
+      - name: "additional"
