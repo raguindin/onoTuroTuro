@@ -1,5 +1,5 @@
 <script>
-    export let viewBox, height, titleText, preserveAspectRatio = 'none';
+    export let viewBox, height, preserveAspectRatio = 'none';
 </script>
 
 <style>
