@@ -1,6 +1,6 @@
 backend:
   name: git-gateway
-  branch: dev
+  branch: master
 
 # publish_mode: editorial_workflow
 media_folder: "public/media/uploads"
@@ -13,11 +13,15 @@ collections:
     files: 
       - name: "combo-items"
         label: "Combo Plates"
-        file: "content/combo-items.json"
-        create: true
-        delete: true
+        file: "public/content/combo-items.json"
         fields:
-          - {label: Name, name: name, widget: string}
-          - {label: Price, name: price, widget: number, min: 0}
-          - {label: Photo, name: src, widget: image, allow_multiple: false}
+          - name: comboPlates
+            label: "comboPlates"
+            create: true
+            delete: true
+            widget: "list"
+            fields:
+              - {label: Name, name: name, widget: string}
+              - {label: Price, name: price, widget: number, min: 0}
+              - {label: Photo, name: src, widget: image, allow_multiple: false}
         
