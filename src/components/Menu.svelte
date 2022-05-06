@@ -2,17 +2,27 @@
     import MenuItem from "elements/MenuItem.svelte"
     import menu from "../../public/content/menu.json"
     console.log(menu);
-    let items = menu.items;
+    let sections = menu.sections;
 </script>
 
+
 <section id=menu>
-    <h3>Combo Plates</h3>
-    <h4>Comes with macaroni salad and choice of fried rice or rice noodles</h4>
-    <ul class="menu-container">
-        {#each items as item}
-            <MenuItem name={item.name} price={item.price} src={item.src}/>
-        {/each}
-    </ul>
+    {#each sections as section}
+        <div class="menu-section">
+            {#if section.subtitle}
+                <h3>{section.title}</h3>
+                <h4>{section.subtitle}</h4>
+            {:else}
+                <h3 class="smaller">{section.title}</h3>
+            {/if}
+            <ul class="menu-container">
+                {#each section.items as item}
+                    <MenuItem name={item.name} price={item.price} src={item.src}/>
+                {/each}
+            </ul>
+        </div>
+    {/each}
+
 </section>
 
 <style>
@@ -21,6 +31,10 @@
         text-align: center;
         padding-left: 8em;
         padding-right: 8em;
+    }
+
+    div.menu-section {
+        margin-bottom: 6em;
     }
 
     h3,h4 {
@@ -34,6 +48,10 @@
         font-weight: 800;
         letter-spacing: 1px;
         margin: 0px;
+    }
+
+    h3.smaller {
+        font-size: 3em;
     }
 
     h4 {

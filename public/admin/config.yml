@@ -15,7 +15,7 @@ collections:
         label: "Menu"
         file: "public/content/menu.json"
         fields: 
-          - name: menu-sections
+          - name: sections
             label: "Menu Sections"
             create: true
             delete: true
