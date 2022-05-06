@@ -1,7 +1,11 @@
 <script>
+    // Menu Item is any orderable item on the menu, such as "Teriyaki Chicken"
     import MenuItem from "elements/MenuItem.svelte"
+
+    // menu.json is populated from the CMS
     import menu from "../../public/content/menu.json"
-    console.log(menu);
+    
+    // Example of sections: Combo Plates, Additional Items
     let sections = menu.sections;
 </script>
 
@@ -22,10 +26,10 @@
             </ul>
         </div>
     {/each}
-
 </section>
 
 <style>
+    /* TODO: Improve menu styles and responsiveness */
 
     #menu {
         text-align: center;
@@ -66,12 +70,6 @@
     }
 
     ul {
-        /* display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        flex-wrap: wrap;
-        padding-left: auto;
-        gap: 1em 2em; */
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(21em, 1fr));
         grid-auto-rows: auto;

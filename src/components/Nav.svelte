@@ -1,18 +1,29 @@
 <script>
+    // TODO: remove tweened and cubicOut as they aren't used
     import { tweened } from 'svelte/motion';
 	import { cubicOut } from 'svelte/easing';
 
+
     let sections = ["Menu", "Calendar", "Our Story"];
+
+    // ActiveSection determines which Nav Link is currently active
     let activeSection = null;
+
+    // TODO: change active section dynamically based on where we are in the page
 
 </script>
 
 <style>
+    /*  Divider bar color -- the current color is what the commented color looks like
+        against --background (but lets it be fully opaque)  */
+    /*  Would love for this to be calculated somehow rather than manual  */
     :root {
         /* --divider-bar: hsla(45, 78%, 65%, 39%); */
         --divider-bar: #f7e5ab;
     }
 
+    /* Animation for when a menu element becomes active */
+    /* TODO: consider different name? */
     @keyframes grow {
         from {
             width: 0vw;
@@ -38,6 +49,9 @@
         width: var(--width);
         height: 100%;
     }
+    
+    /* TODO: make non-active li elements also stick relative to the active element */
+    
 
     li {
         font-family: var(--sans);

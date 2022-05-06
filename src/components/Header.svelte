@@ -1,17 +1,23 @@
 <script>
+    // .svelte object instead of Banner svg
     import Banner from 'elements/Banner.svelte'
 
+    // Banner props
     let viewBox="0 0 1460 500";
-    
     let height="30em"
+
+    // Website Title and Subtitle text
+    // TODO: Update to use the CMS
 	let titleText="ONO TURO-TURO";
     let subtitleText="Hawaiian-Filipino Food Truck";
+    // TODO: add address variable
 
 </script>
 
 <header>
-    <Banner {viewBox} {height} {titleText}/>
+    <Banner {viewBox} {height}/>
     <div>
+        <!-- TODO: make title/subtitle text curved -->
         <h1>
             {titleText}
         </h1>
@@ -25,12 +31,14 @@
 </header>
 
 <style>
+    /* Header text - TODO: consider moving to App.svelte as --light-text */
     :root {
-        --h1-text: hsl(43, 100%, 99%);
-    }
+        --h1-text: hsl(48, 100%, 99%)    }
 
+    /* Grid to manage the heading text positions */
     div {
         display: inline-grid;
+        /* clamp ensures the main column stays a proper size on the screen */
         grid-template-columns: 1fr clamp(50%, 50em, 100%);
         grid-template-rows: 6em 6em 3em 3em;
         width: 100%;
