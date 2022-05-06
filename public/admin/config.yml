@@ -26,4 +26,3 @@ collections:
               - {label: Name, name: name, widget: string}
               - {label: "Price in $", name: price, widget: number, min: 0}
               - {label: Photo, name: src, widget: image, pattern: ['\d+\.?\d*', "Must be a valid number, no $"], allow_multiple: false}
-      - name: "additional"
