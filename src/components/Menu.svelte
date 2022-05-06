@@ -1,16 +1,16 @@
 <script>
     import MenuItem from "elements/MenuItem.svelte"
-    import menuItems from "../../public/content/combo-items.json"
-    console.log(menuItems);
-    let comboPlates = menuItems.comboPlates;
+    import menu from "../../public/content/menu.json"
+    console.log(menu);
+    let items = menu.items;
 </script>
 
 <section id=menu>
     <h3>Combo Plates</h3>
     <h4>Comes with macaroni salad and choice of fried rice or rice noodles</h4>
     <ul class="menu-container">
-        {#each comboPlates as plate}
-            <MenuItem name={plate.name} price={plate.price} src={plate.src}/>
+        {#each items as item}
+            <MenuItem name={item.name} price={item.price} src={item.src}/>
         {/each}
     </ul>
 </section>
