@@ -1,0 +1,11 @@
+{
+  "title": "Combo Plates",
+  "subtitle": "Comes with macaroni salad and choice of fried rice or rice noodles",
+  "items": [
+    {
+      "name": "Teriyaki Chicken",
+      "price": 12,
+      "src": "media/uploads/teriyaki_chicken.jpg"
+    }
+  ]
+}
