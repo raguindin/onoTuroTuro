@@ -1,6 +1,10 @@
 <script>
     import MenuItem from "elements/MenuItem.svelte"
+<<<<<<< Updated upstream
     import menuItems from "content/menuItems.json"
+=======
+    import menuItems from "../../public/content/combo-items.json"
+>>>>>>> Stashed changes
 
     console.log(menuItems);
     let comboPlates = menuItems.comboPlates;
