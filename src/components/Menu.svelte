@@ -1,12 +1,11 @@
 <script>
-    // Menu Item is any orderable item on the menu, such as "Teriyaki Chicken"
     import MenuItem from "elements/MenuItem.svelte"
 
     // menu.json is populated from the CMS
     import menu from "../../public/content/menu.json"
     
     // Example of sections: Combo Plates, Additional Items
-    let sections = menu.sections;
+    const sections = menu.sections;
 </script>
 
 
@@ -20,8 +19,8 @@
                 <h3 class="smaller">{section.title}</h3>
             {/if}
             <ul class="menu-container">
-                {#each section.items as item}
-                    <MenuItem name={item.name} price={item.price} src={item.src}/>
+                {#each section.items as foodItem}
+                    <MenuItem name={foodItem.name} price={foodItem.price} src={foodItem.src}/>
                 {/each}
             </ul>
         </div>

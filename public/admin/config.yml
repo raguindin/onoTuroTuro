@@ -7,16 +7,46 @@ media_folder: "public/media/uploads"
 public_folder: "media/uploads"
 
 collections:
- -  name: "main"
+  - name: menu
+    label: Menu
+    label_singular: "Menu Section"
+    description: >
+      Update the contents for the food truck menu, based on the section the food item
+      appears in.
+    extension: json
+    folder: public/content/_menu
+    slug: '{{year}}{{month}}{{day}}-{{slug}}'
+    summary: '{{title}}'
+    create: true
+    delete: true
+    fields: 
+      - { label: 'Section Name', name: title, widget: string, tagname: h1 }
+      - { label: 'Subtitle', name: subtitle, widget: string, tagname: h2 }
+      - label: 'Food Items'
+        name: items
+        widget: list
+        label_singular: 'Food Item'
+        summary: {{fields.name}}
+        fields:
+          - { label: 'Name', name: name, widget: string, tagname: p }
+          - { label: 'Price', name: price, widget: number, 
+              pattern: ['\d+\.?\d*', "Must be a valid number, no $"], min: 0, tagname: strong }
+          - {label: Photo, name: src, widget: image, allow_multiple: false, tagname: img }
+
+    # Above is folder-based implementation which will work better for the user
+    # Below is the current, single-file-based implementation. 
+  - name: "main"
     label: "Ono Turo-Turo"
     extension: json
     files:
       - name: menu
         label: "Menu"
+        delete: false
         file: "public/content/menu.json"
         fields: 
           - name: sections
             label: "Menu Sections"
+            label_singular: "Menu Section"
             create: true
             delete: true
             widget: "list"
@@ -25,11 +55,12 @@ collections:
               - {label: "Section Subtitle", name: subtitle, widget: string, required: false}
               - name: items
                 label: "Items"
+                label_singular: "Item"
                 create: true
                 delete: true
                 widget: "list"
                 fields:
                   - {label: Name, name: name, widget: string}
-                  - {label: Price, name: price, widget: number, min: 0}
+                  - {label: Price, name: price, widget: number, pattern: ['\d+\.?\d*', "Must be a valid number, no $"], min: 0}
                   - {label: Photo, name: src, widget: image, allow_multiple: false}
           

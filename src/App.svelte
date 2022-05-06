@@ -1,19 +1,14 @@
 <script>
-	// importing normalize.css 
-	// TODO: make sure this is working or move to /public
-	import Normalize from "./dependencies/Normalize.svelte";
-
-	// component imports
+	// Custom Component
 	import Header from "./components/Header.svelte";
 	import Nav from "./components/Nav.svelte";
 	import Menu from "./components/Menu.svelte";
 
-	// side Navbar width
 	// TODO: make this more responsive
-	let navWidth = "20em";
+	const navWidth = "20em";
 	
 	// Loop to create a bunch of text on the page
-	// TODO: This needs to be removed before production
+	// FIXME: This needs to be removed before production
 	let temp = []
 	for (let i = 0; i < 20; i++) {
 		temp.push(i);
@@ -21,8 +16,6 @@
 </script>
 
 <main>
-	<!-- Normalize script - again, maybe move to public -->
-	<Normalize/> 
 	<Header/>
 	<Nav --width={navWidth}/>
 	<section style="padding-left:{navWidth}; padding-top: 8.5em" id=main-content>
@@ -34,20 +27,6 @@
 			</p>	
 		{/each}
 	</section>
-
-	<script>
-		// Netlify verification. Perhaps move to <body> on index.html
-		// TODO: verify this is working and if not, FIXME:
-		if (window.netlifyIdentity) {
-			window.netlifyIdentity.on("init", user => {
-			if (!user) {
-				window.netlifyIdentity.on("login", () => {
-				document.location.href = "/admin/";
-				});
-			}
-			});
-		}
-	</script>
 </main>
 
 <style global>
@@ -56,6 +35,7 @@
 
 	:root {
 		/* Frequently used colors */
+		/* TODO: Refactor color names */
 		--primary-g: hsl(105, 23%, 40%);
 		--primary-b: hsl(234, 21%, 48%);
 		--primary-r: hsl(7, 45%, 42%);
@@ -67,7 +47,6 @@
 		--text-g: hsl(106, 24%, 34%); 
 		--text-r: var(--primary-r);
 
-		/* Font families */
 		--sans: 'Mulish', sans-serif;
 		--serif: 'PT Serif', serif;
 
@@ -77,7 +56,6 @@
 
 	#main-content {
 		background-color: var(--background);
-		/* margin-left: 20em; */
 	}
 
 	/* TODO: remove this block after removing the above lorem ipsum */
@@ -86,7 +64,7 @@
 		width: 50%;
 	}
 
-	/* Reduce boilerplate by making list styling global */
+	/* Reduces boilerplate by making list styling global */
 	ul {
         padding-inline-start: 0;
 	}
