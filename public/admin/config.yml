@@ -10,15 +10,16 @@ collections:
  -  name: "menu"
     label: "Menu"
     extension: json
-    create: true
-    delete: true
-    widget: "list"
-    file: "public/content/menu.json"
-    fields: 
-      - name: "menu-sections"
+    files:
+      - name: "menu-items"
         label: "Menu Sections"
-        fields:
+        file: "public/content/menu.json"
+        create: true
+        delete: true
+        widget: "list"
+        fields: 
           - {label: "Section Title", name: title, widget: string}
+          - {label: "Section Subtitle", name: subtitle, widget: string, required: false}
           - name: items
             label: "Items"
             create: true
@@ -28,4 +29,4 @@ collections:
               - {label: Name, name: name, widget: string}
               - {label: Price, name: price, widget: number, min: 0}
               - {label: Photo, name: src, widget: image, allow_multiple: false}
-        
+          
