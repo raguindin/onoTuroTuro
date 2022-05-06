@@ -26,7 +26,7 @@ collections:
         name: items
         widget: list
         label_singular: 'Food Item'
-        summary: {{fields.name}}
+        summary: '{{fields.name}}'
         fields:
           - { label: 'Name', name: name, widget: string, tagname: p }
           - { label: 'Price', name: price, widget: number, 
