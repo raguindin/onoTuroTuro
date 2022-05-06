@@ -83,10 +83,7 @@ export default {
 					find: 'dependencies',
 					replacement: '../dependencies'
 				},
-				{
-					find: 'media',
-					replacement: '../media'
-				},
+				
 			]
 		}),
 		json(),

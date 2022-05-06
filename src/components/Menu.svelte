@@ -1,6 +1,6 @@
 <script>
     import MenuItem from "elements/MenuItem.svelte"
-    import menuItems from "content/menuItems.json"
+    import menuItems from "../../public/content/menuItems.json"
 
     console.log(menuItems);
     let comboPlates = menuItems.comboPlates;
