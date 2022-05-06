@@ -12,5 +12,33 @@
       "price": 15,
       "src": "media/uploads/garlic_chicken.jpg"
     }
+  ],
+  "menu-sections": [
+    {
+      "title": "Combo Plates",
+      "subtitle": "Comes with macaroni salad and choice of fried rice or rice noodles",
+      "items": [
+        {
+          "name": "Teriyaki Chicken",
+          "price": 10,
+          "src": "media/uploads/teriyaki_chicken.jpg"
+        },
+        {
+          "name": "Garlic Chicken",
+          "price": 12,
+          "src": "media/uploads/garlic_chicken.jpg"
+        }
+      ]
+    },
+    {
+      "title": "Additional Items",
+      "items": [
+        {
+          "name": "Shaved Ice",
+          "price": 4,
+          "src": "media/uploads/shaved_ice.jpg"
+        }
+      ]
+    }
   ]
 }
