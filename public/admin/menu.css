@@ -10,7 +10,7 @@
     --serif: 'PT Serif', serif;
 }
 
-html,body {
+body {
     text-align: center;
     background-color: var(--background); 
     color: var(--text-b);
@@ -29,16 +29,6 @@ h1 {
     font-weight: 800;
     letter-spacing: 1px;
 }
-/* 
-h1 {
-    font-size: 1em;
-    color: var(--text-g);
-    margin-top: 10px;
-    letter-spacing: 2px;
-    line-height: 1.3em;
-    max-width: 18em;
-    margin-bottom: 10px;
-} */
 
 img {
     height: 13em;
