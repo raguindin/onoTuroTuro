@@ -27,10 +27,10 @@ collections:
         widget: list
         label_singular: 'Food Item'
         summary: '{{fields.name}}'
+        tagname: div
         fields:
           - { label: 'Name', name: name, widget: string, tagname: p }
-          - { label: 'Price', name: price, widget: number, 
-              pattern: ['\d+\.?\d*', "Must be a valid number, no $"], min: 0, tagname: strong }
+          - { label: 'Price', name: price, widget: number, min: 0, tagname: p }
           - {label: Photo, name: src, widget: image, allow_multiple: false, tagname: img }
 
     # Above is folder-based implementation which will work better for the user
