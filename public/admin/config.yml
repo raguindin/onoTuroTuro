@@ -1,0 +1,23 @@
+backend:
+  name: git-gateway
+  branch: dev
+
+publish_mode: editorial_workflow
+media_folder: "public/media/uploads"
+public_folder: "media/uploads"
+
+collections:
+ -  name: "menu"
+    label: "Menu Items"
+    extension: json
+    files: 
+      - name: "combo-items"
+        label: "Combo Plates"
+        file: "content/combo-items.json"
+        create: true
+        delete: true
+        fields:
+          - {label: Name, name: name, widget: string}
+          - {label: Price, name: price, widget: number, min: 0}
+          - {label: Photo, name: src, widget: image, allow_multiple: false}
+        
