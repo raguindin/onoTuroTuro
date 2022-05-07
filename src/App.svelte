@@ -3,6 +3,7 @@
 	import Header from "./components/Header.svelte";
 	import Nav from "./components/Nav.svelte";
 	import Menu from "./components/Menu.svelte";
+	import Calendar from "./components/Calendar.svelte"
 
 	// TODO: make this more responsive
 	const navWidth = "20em";
@@ -20,6 +21,7 @@
 	<Nav --width={navWidth}/>
 	<section style="padding-left:{navWidth}; padding-top: 8.5em" id=main-content>
 		<Menu/>
+		<Calendar/>
 		<!-- TODO: remove the below text once more content is on the site -->
 		{#each temp as i}
 			<p class="loremipsum">
