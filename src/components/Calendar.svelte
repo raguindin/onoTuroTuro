@@ -1,8 +1,10 @@
 <script>
+  // REF: https://github.com/YogliB/svelte-fullcalendar/
   import FullCalendar from 'svelte-fullcalendar';
   import daygridPlugin from '@fullcalendar/daygrid';
   import interactionPlugin from '@fullcalendar/interaction';
 
+  
   // TODO: Calendar styles  -  https://fullcalendar.io/docs/css-customization
   // TODO: Add Google Map  -  https://developers.google.com/maps/documentation/embed/get-started?hl=en_US
   // TODO: Add event-clicking functionality  -  https://fullcalendar.io/docs/eventClick
