@@ -15,7 +15,7 @@ collections:
       appears in.
     extension: json
     folder: public/content/_menu
-    slug: '{{year}}{{month}}{{day}}-{{slug}}'
+    slug: '{{year}}{{month}}{{day}}{{hour}{{minute}{{second}}-{{slug}}'
     summary: '{{title}}'
     create: true
     delete: true
@@ -32,8 +32,8 @@ collections:
           - { label: 'Name', name: name, widget: string, tagname: p }
           - { label: 'Price', name: price, widget: number, min: 0, tagname: p }
           - {label: Photo, name: src, widget: image, allow_multiple: false, tagname: img }
-
     # Above is folder-based implementation which will work better for the user
+  
     # Below is the current, single-file-based implementation. 
   - name: "main"
     label: "Ono Turo-Turo"
