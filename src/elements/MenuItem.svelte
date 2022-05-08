@@ -20,8 +20,8 @@
     }
 
     p {
-        color: var(--text-b);
-        font-family: var(--serif);
+        color: var(--item-text-color);
+        font-family: var(--item-font);
         font-size: 1.5em;
         text-transform: uppercase;
         white-space: nowrap;

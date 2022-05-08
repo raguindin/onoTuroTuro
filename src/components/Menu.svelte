@@ -20,7 +20,12 @@
             {/if}
             <ul class="menu-container">
                 {#each section.items as foodItem}
-                    <MenuItem name={foodItem.name} price={foodItem.price} src={foodItem.src}/>
+                    <MenuItem 
+                        name={foodItem.name} 
+                        price={foodItem.price} 
+                        src={foodItem.src}
+                        --item-text-color="var(--item-text-color)"
+                        --item-font="var(--item-font)"/>
                 {/each}
             </ul>
         </div>
@@ -40,13 +45,10 @@
         margin-bottom: 6em;
     }
 
-    h3,h4 {
-        font-family: var(--sans);
-    }
-
     h3 {
         font-size: 3.4em;
-        color: var(--text-r);
+        color: var(--section-title-text-color);
+        font-family: var(--section-title-font);
         text-transform: uppercase;
         font-weight: 800;
         letter-spacing: 1px;
@@ -59,7 +61,8 @@
 
     h4 {
         font-size: 1.3em;
-        color: var(--text-g);
+        color: var(--section-subtitle-text-color);
+        font-family: var(--section-subtitle-font);
         margin-top: 10px;
         letter-spacing: 2px;
         line-height: 1.3em;

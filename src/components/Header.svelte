@@ -33,7 +33,8 @@
 <style>
     /* Header text - TODO: consider moving to App.svelte as --light-text */
     :root {
-        --h1-text: hsl(48, 100%, 99%)    }
+        --h1-text: hsl(48, 100%, 99%)
+    }
 
     /* Grid to manage the heading text positions */
     div {
@@ -50,7 +51,7 @@
     
     a {
         text-decoration: none;
-        color: var(--addr-text);
+        color: var(--address-text-color);
     }
 
     a:hover {
@@ -61,7 +62,7 @@
     h1 {
         grid-column: 2;
         grid-row: 2;
-        color: var(--h1-text);
+        color: var(--title-text-color);
         margin: 0px;
         font-family: 'Mulish', sans-serif;
         text-transform: uppercase;
@@ -76,14 +77,14 @@
         grid-column: 2;
         grid-row: 3;
         font-size: clamp(1vw, 2.4em, 7vw);
-        color: var(--text-g);
+        color: var(--subtitle-text-color);
         font-style: italic;
         font-weight: 700;
     }
 
     address {
         font-style: normal;
-        color: var(--text-b);
+        color: var(--address-text-color);
         grid-column: 2;
         grid-row: 4;
         font-size: 2em;
