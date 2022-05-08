@@ -37,7 +37,10 @@
 
 	:root {
 		/* Frequently used colors */
-		/* TODO: Refactor color names */
+		/* TODO: Refactor color names to something like
+		 		 --primary-green */
+		/* TODO: use props instead of global variables to better represent
+				 color names within components */
 		--primary-g: hsl(105, 23%, 40%);
 		--primary-b: hsl(234, 21%, 48%);
 		--primary-r: hsl(7, 45%, 42%);

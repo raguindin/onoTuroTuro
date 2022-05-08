@@ -1,10 +1,5 @@
 <script>
-    // TODO: remove tweened and cubicOut as they aren't used
-    import { tweened } from 'svelte/motion';
-	import { cubicOut } from 'svelte/easing';
-
-
-    let sections = ["Menu", "Calendar", "Our Story"];
+    const sections = ["Menu", "Calendar", "Our Story"];
 
     // ActiveSection determines which Nav Link is currently active
     let activeSection = null;
@@ -106,7 +101,10 @@
 <aside>
     <ul>
         {#each sections as section, index}
-            <li id={index} on:click="{() => activeSection=index}" class={index === activeSection ? 'isActive' : 'notActive'}><a href="#menu">{section}</a></li>
+            <li id={index} on:click="{() => activeSection=index}" 
+                class={index === activeSection ? 'isActive' : 'notActive'}>
+                <a href="#menu">{section}</a>
+            </li>
         {/each}
     </ul>
 </aside>
