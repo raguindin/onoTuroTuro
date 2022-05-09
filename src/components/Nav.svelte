@@ -1,5 +1,6 @@
 <script>
     const sections = ["Menu", "Calendar", "Our Story"];
+    const section_ids = sections.map(x => x.replace(/\s/g , "-").toLowerCase());
 
     // ActiveSection determines which Nav Link is currently active
     let activeSection = null;
@@ -9,14 +10,6 @@
 </script>
 
 <style>
-    /*  Divider bar color -- the current color is what the commented color looks like
-        against --background (but lets it be fully opaque)  */
-    /*  Would love for this to be calculated somehow rather than manual  */
-    :root {
-        /* --divider-bar: hsla(45, 78%, 65%, 39%); */
-        --divider-bar: #f7e5ab;
-    }
-
     /* Animation for when a menu element becomes active */
     /* TODO: consider different name? */
     @keyframes grow {
@@ -46,10 +39,9 @@
     }
     
     /* TODO: make non-active li elements also stick relative to the active element */
-    
 
     li {
-        font-family: var(--sans);
+        font-family: var(--nav-item-font);
         text-transform: uppercase;
         line-height: 2em;
         height: 2em;
@@ -67,8 +59,8 @@
     li.isActive {
         position: sticky;
         top: 50px;
-        background: var(--divider-bar);
-        color: var(--text-r);
+        background: var(--nav-active-item-background-color);
+        color: var(--nav-active-item-text-color);
         animation-name: grow;
         animation-timing-function: ease-in-out;
         animation-duration: 0.5s;
@@ -83,13 +75,13 @@
         padding-top: 50px;
         margin-left: -1em;
         width: 100vw;
-        background: var(--background);
+        background: var(--background-color);
         display: block;
         content: "";
     }
 
     li.notActive {
-        color: var(--text-b);
+        color: var(--nav-inactive-item-text-color);
     }
 
     a {
@@ -103,7 +95,7 @@
         {#each sections as section, index}
             <li id={index} on:click="{() => activeSection=index}" 
                 class={index === activeSection ? 'isActive' : 'notActive'}>
-                <a href="#menu">{section}</a>
+                <a href="#{section_ids[index]}">{section}</a>
             </li>
         {/each}
     </ul>

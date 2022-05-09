@@ -15,7 +15,13 @@
 </script>
 
 <header>
-    <Banner {viewBox} {height}/>
+    <Banner 
+        --top-color="var(--banner-top-color)"
+        --middle-color="var(--banner-middle-color)"
+        --bottom-color="var(--banner-bottom-color)"
+        {viewBox}
+        {height}
+    />
     <div>
         <!-- TODO: make title/subtitle text curved -->
         <h1>

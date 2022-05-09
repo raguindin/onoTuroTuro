@@ -23,9 +23,7 @@
                     <MenuItem 
                         name={foodItem.name} 
                         price={foodItem.price} 
-                        src={foodItem.src}
-                        --item-text-color="var(--item-text-color)"
-                        --item-font="var(--item-font)"/>
+                        src={foodItem.src}/>
                 {/each}
             </ul>
         </div>

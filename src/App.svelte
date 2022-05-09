@@ -3,19 +3,36 @@
 	import Header from "./components/Header.svelte";
 	import Nav from "./components/Nav.svelte";
 	import Menu from "./components/Menu.svelte";
-	import Calendar from "./components/Calendar.svelte"
+	import Calendar from "./components/Calendar.svelte";
+	export let ready;
 
 	// TODO: make this more responsive
 	const navWidth = "20em";
+	const googleApiKey = "AIzaSyB2Z8A8BF_g-pn_sTMA86FqAksSRJ4CHnM";
 </script>
+
+<svelte:head>
+	<script defer async
+	  src="https://maps.googleapis.com/maps/api/js?key={googleApiKey}&callback=initMap">
+	</script>
+</svelte:head>
 
 <main>
 	<Header 
 		--address-text-color="var(--text-blue)"
 		--title-text-color="hsl(48, 100%, 99%)"
 		--subtitle-text-color="var(--text-green)"
-	/> <!-- TODO: refactor the colors in Banner and Nav -->
-	<Nav --width={navWidth}/>
+		--banner-top-color="var(--primary-green)"
+		--banner-middle-color="var(--primary-red)"
+		--banner-bottom-color="var(--primary-blue)"
+	/> 
+	<Nav 
+		--width={navWidth}
+		--nav-item-font="var(--sans)"
+		--nav-active-item-background-color="#f7e5ab"
+		--nav-active-item-text-color="var(--text-red)"
+		--nav-inactive-item-text-color="var(--text-blue)"
+	/>
 	<section style="padding-left:{navWidth}; padding-top: 8.5em" id=main-content>
 		<Menu
 			--section-title-text-color="var(--text-red)"
@@ -25,11 +42,14 @@
 			--item-text-color="var(--text-blue)"
 			--item-font="var(--serif)"
 		/>
-		<Calendar/>
+		<Calendar bind:ready={ready}/>
+		{#each [...Array(40).keys()] as x}
+			<br>
+		{/each}
 	</section>
 </main>
 
-<style global>
+<style>
 	/* Google fonts */
 	@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@400;500;600;700;800;900&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
@@ -62,18 +82,12 @@
 		background-color: var(--background-color);
 	}
 
-	/* TODO: remove this block after removing the above lorem ipsum */
-	p.loremipsum {
-		margin: auto;
-		width: 50%;
-	}
-
 	/* Reduces boilerplate by making list styling global */
-	ul {
+	:global(ul) {
         padding-inline-start: 0;
 	}
 
-	li {
+	:global(li) {
 		list-style-type: none;
 	}
 
