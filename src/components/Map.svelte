@@ -1,27 +1,13 @@
 <script>
-    // import mapStyles from './map-styles'; // optional
-
-
-    let container;
-    let zoom = 18;
-    export let center = {lat: -34.397, lng: 150.644};
-    let map;
-   
-    import { onMount } from 'svelte';
-   
-    onMount(async () => {
-        map = new google.maps.Map(container, {
-            zoom,
-            center
-        });
-    });
+    export let addressText = "The Gahanna Plant Library";
+    const googleApiKey = "AIzaSyB2Z8A8BF_g-pn_sTMA86FqAksSRJ4CHnM";
 </script>
 
-<style>
-    div {
-        width: 100%;
-        height: 100%;
-    }
-</style>
-
-<div bind:this={container}></div>
+<iframe title="Google Maps"
+        width="100%" 
+        height="100%" 
+        style="border:0" 
+        loading="lazy" 
+        allowfullscreen 
+        src="https://www.google.com/maps/embed/v1/search?q={addressText}&key={googleApiKey}">
+</iframe> 

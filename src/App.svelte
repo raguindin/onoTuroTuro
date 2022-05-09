@@ -8,14 +8,7 @@
 
 	// TODO: make this more responsive
 	const navWidth = "20em";
-	const googleApiKey = "AIzaSyB2Z8A8BF_g-pn_sTMA86FqAksSRJ4CHnM";
 </script>
-
-<svelte:head>
-	<script defer async
-	  src="https://maps.googleapis.com/maps/api/js?key={googleApiKey}&callback=initMap">
-	</script>
-</svelte:head>
 
 <main>
 	<Header 

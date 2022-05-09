@@ -4,12 +4,10 @@
   import daygridPlugin from '@fullcalendar/daygrid';
   import interactionPlugin from '@fullcalendar/interaction';
   import Map from "./Map.svelte";
-  export let ready;
 
   let calendarRef;
 
-  
-  let addressText = "Creekside Gahanna, Ohio";
+  let addressText;
 
   // TODO TODAY: BELOW (in order, not all)
   // TODO: Calendar styles  -  https://fullcalendar.io/docs/css-customization
@@ -35,17 +33,13 @@
   }
 </script>
 
-
-
 <section id="calendar">
   <div class="calendar-wrapper">
     <FullCalendar bind:this={calendarRef} {options}/>
   </div>
 
   <div class="map-wrapper">
-    { #if ready }
-      <Map></Map>
-    { /if }
+      <Map {addressText}></Map>
   </div>
   
 </section>
