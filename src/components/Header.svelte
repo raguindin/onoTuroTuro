@@ -3,13 +3,13 @@
     import Banner from 'elements/Banner.svelte'
 
     // Banner props
-    let viewBox="0 0 1460 500";
-    let height="30em"
+    const viewBox="0 0 1460 500";
+    const height="30em"
 
     // Website Title and Subtitle text
     // TODO: Update to use the CMS
-	let titleText="ONO TURO-TURO";
-    let subtitleText="Hawaiian-Filipino Food Truck";
+	const titleText="ONO TURO-TURO";
+    const subtitleText="Hawaiian-Filipino Food Truck";
     // TODO: add address variable
 
 </script>
