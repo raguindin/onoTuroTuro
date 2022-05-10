@@ -21,7 +21,7 @@ collections:
     delete: true
     fields: 
       - { label: 'Section Name', name: title, widget: string, tagname: h1 }
-      - { label: 'Subtitle', name: subtitle, widget: string, tagname: h1 }
+      - { label: 'Subtitle', name: subtitle, widget: string, required: false }
       - label: 'Food Items'
         name: items
         widget: list
@@ -52,6 +52,7 @@ collections:
       - { label: "Date", name: eventdate, widget: datetime, default: "", time_format: false, format: "YYYY-MM-DD" }
       - { label: "Start Time", name: starttime, widget: datetime, default: "", date_format: false, format: "HH:mm" }
       - { label: "End Time", name: endtime, widget: datetime, default: "", date_format: false, format: "HH:mm" }
+      - { label: "Event Description", name: body, widget: markdown, required: false }
 
     # Below is the current, single-file-based implementation. 
   - name: "main"
