@@ -49,8 +49,8 @@ collections:
           hint: "Examples: *Food truck festival, Company Office Lunch, Creekside*" }
       - { label: "Address", name: address, widget: string }
       - { label: "Date", name: eventdate, widget: datetime, default: "", time_format: false, format: "YYYY-MM-DD" }
-      - { label: "Start Time", name: starttime, widget: datetime, default: "", date_format: false, format: "HH:mm" }
-      - { label: "End Time", name: endtime, widget: datetime, default: "", date_format: false, format: "HH:mm" }
+      - { label: "Start Time", name: starttime, widget: datetime, default: "", date_format: false, format: "hh:mm a" }
+      - { label: "End Time", name: endtime, widget: datetime, default: "", date_format: false, format: "hh:mm a" }
 
     # Below is the current, single-file-based implementation. 
   - name: "main"
