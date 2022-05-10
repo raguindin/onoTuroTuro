@@ -5,6 +5,8 @@
   import interactionPlugin from '@fullcalendar/interaction';
   import Map from "./Map.svelte";
 
+  import event1 from "../../public/content/_calendar/2022-05-13-11-00-test-event.json";
+
   let calendarRef;
   let addressText;
   
@@ -14,8 +16,6 @@
   // TODO: determine functionality for when there is no event on a day
 
   // populate calendar with events in the _calendar folder
-  const calendarPath =  "../../public/content/_calendar"
-  // TODO: create bundler for JSON files
 
   const options = {
     dateClick: (event) => {
