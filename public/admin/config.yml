@@ -40,10 +40,11 @@ collections:
       Add all upcoming events and locations for the truck here.
     extension: json
     folder: public/content/_calendar
-    slug: '{{fields.eventdate}}{{starttime}}-{{name}}'
+    slug: '{{fields.eventdate}}-{{starttime}}-{{name}}'
     summary: '{{fields.eventdate}} at {{starttime}} - {{name}}'
     create: true
     delete: true
+    # TODO: add filter to hide past events
     fields:
       - { label: Name, name: name, widget: string, tagname: h1,
           hint: "Examples: *Food truck festival, Company Office Lunch, Creekside*" }
