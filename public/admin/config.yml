@@ -32,9 +32,9 @@ collections:
           - { label: 'Name', name: name, widget: string, tagname: p }
           - { label: 'Price', name: price, widget: number, min: 0, tagname: p }
           - {label: Photo, name: src, widget: image, allow_multiple: false, tagname: img }
-    # Above is folder-based implementation which will work better for the user
+
   - name: calendar
-    label: Calendar Events
+    label: Calendar
     label_singular: "Event"
     description: >
       Add all upcoming events and locations for the truck here.
@@ -47,9 +47,8 @@ collections:
     fields:
       - { label: Name, name: name, widget: string,
           hint: "Examples: *Food truck festival, Company Office Lunch, Creekside*" }
-      - { label: "Location", name: location, widget: map }
       - { label: "Address", name: address, widget: string }
-      - { label: "Date", name: dateTime, widget: datetime, default: "", format: "YYYY-MM-DD HH:MM" }
+      - { label: "Date", name: dateTime, widget: datetime, default: "", format: "YYYY-MM-DD HH:mm" }
 
     # Below is the current, single-file-based implementation. 
   - name: "main"
