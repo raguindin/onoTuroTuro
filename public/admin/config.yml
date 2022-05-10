@@ -43,8 +43,8 @@ collections:
       Add all upcoming events and locations for the truck here.
     extension: json
     folder: public/content/_calendar
-    slug: '{{fields.dateTime}}-{{name}}'
-    summary: '{{fields.dateTime}} - {{name}}'
+    slug: '{{fields.eventdate}}{{starttime}}-{{name}}'
+    summary: '{{fields.eventdate}} at {{starttime}} - {{name}}'
     create: true
     delete: true
     fields:
