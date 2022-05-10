@@ -6,12 +6,16 @@
   import Map from "./Map.svelte";
 
   let calendarRef;
-
   let addressText;
+  
 
   // TODO: Calendar styles  -  https://fullcalendar.io/docs/css-customization
   // TODO: clicking date/event opens the relevant map location (if applicable)
   // TODO: determine functionality for when there is no event on a day
+
+  // populate calendar with events in the _calendar folder
+  const calendarPath =  "../../public/content/_calendar"
+  // TODO: create bundler for JSON files
 
   const options = {
     dateClick: (event) => {

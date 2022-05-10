@@ -4,7 +4,6 @@
 	import Nav from "./components/Nav.svelte";
 	import Menu from "./components/Menu.svelte";
 	import Calendar from "./components/Calendar.svelte";
-	export let ready;
 
 	// TODO: make this more responsive
 	const navWidth = "20em";
@@ -35,7 +34,7 @@
 			--item-text-color="var(--text-blue)"
 			--item-font="var(--serif)"
 		/>
-		<Calendar bind:ready={ready}/>
+		<Calendar/>
 		{#each [...Array(40).keys()] as x}
 			<br>
 		{/each}
