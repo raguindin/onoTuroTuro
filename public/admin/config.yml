@@ -6,9 +6,6 @@ backend:
 media_folder: "public/media/uploads"
 public_folder: "media/uploads"
 
-slug:
-  sanitize_replacement: ""
-
 collections:
   - name: menu
     label: Menu
