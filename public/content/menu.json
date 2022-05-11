@@ -7,12 +7,32 @@
         {
           "name": "Teriyaki Chicken",
           "price": 10,
-          "src": "media/uploads/teriyaki_chicken.jpg"
+          "src": "media/uploads/teriyaki-chicken.jpg"
         },
         {
           "name": "Garlic Chicken",
+          "price": 10,
+          "src": "media/uploads/garlic-chicken.jpg"
+        },
+        {
+          "name": "Chicken Katsu",
+          "price": 10,
+          "src": "media/uploads/chicken-katsu.jpg"
+        },
+        {
+          "name": "Kalbi",
+          "price": 13,
+          "src": "media/uploads/kalbi.jpg"
+        },
+        {
+          "name": "Bulgogi",
           "price": 12,
-          "src": "media/uploads/garlic_chicken.jpg"
+          "src": "media/uploads/bulgogi.jpg"
+        },
+        {
+          "name": "Shrimp Tempura",
+          "price": 12,
+          "src": "media/uploads/shrimp-tempura.jpg"
         }
       ]
     },
@@ -22,7 +42,22 @@
         {
           "name": "Shaved Ice",
           "price": 4,
-          "src": "media/uploads/shaved_ice.jpg"
+          "src": "media/uploads/shaved-ice.jpg"
+        },
+        {
+          "name": "Shaved Ice",
+          "price": 4,
+          "src": "media/uploads/shaved-ice.jpg"
+        },
+        {
+          "name": "Shaved Ice",
+          "price": 4,
+          "src": "media/uploads/shaved-ice.jpg"
+        },
+        {
+          "name": "Shaved Ice",
+          "price": 4,
+          "src": "media/uploads/shaved-ice.jpg"
         }
       ]
     }

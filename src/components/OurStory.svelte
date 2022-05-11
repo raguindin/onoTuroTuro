@@ -1,4 +1,4 @@
-<section id="our-story">
+<div class="section-wrapper">
     <figure>
         <img src="media/family.png" alt="Our family">
         <figcaption>Our Family</figcaption>
@@ -6,10 +6,10 @@
     <div class="bio-wrapper">
         <p>Story of the food truck will go here</p>
     </div>
-</section>
+</div>
 
 <style>
-    section {
+    .section-wrapper {
         margin-top: 5em;
         display: flex;
         align-items: flex-start;

@@ -9,35 +9,33 @@
 </script>
 
 
-<section id=menu>
-    {#each sections as section}
-        <div class="menu-section">
-            {#if section.subtitle}
-                <h3>{section.title}</h3>
-                <h4>{section.subtitle}</h4>
-            {:else}
-                <h3 class="smaller">{section.title}</h3>
-            {/if}
-            <ul class="menu-container">
-                {#each section.items as foodItem}
-                    <MenuItem 
-                        name={foodItem.name} 
-                        price={foodItem.price} 
-                        src={foodItem.src}/>
-                {/each}
-            </ul>
-        </div>
-    {/each}
-</section>
+
+{#each sections as section}
+    <div class="menu-section">
+        {#if section.subtitle}
+            <h3>{section.title}</h3>
+            <h4>{section.subtitle}</h4>
+        {:else}
+            <h3 class="smaller">{section.title}</h3>
+        {/if}
+        <ul class="menu-container">
+            {#each section.items as foodItem}
+                <MenuItem 
+                    name={foodItem.name} 
+                    price={foodItem.price} 
+                    src={foodItem.src}/>
+            {/each}
+        </ul>
+    </div>
+{/each}
+
 
 <style>
     /* TODO: Improve menu styles and responsiveness */
 
-    #menu {
-        text-align: center;
-    }
 
     div.menu-section {
+        text-align: center;
         margin-bottom: 6em;
     }
 

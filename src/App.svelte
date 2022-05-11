@@ -4,41 +4,71 @@
 	import Menu from "./components/Menu.svelte";
 	import Calendar from "./components/Calendar.svelte";
 	import OurStory from "./components/OurStory.svelte";
+	import { onMount } from "svelte";
+
+	// svelte bindings
+	let scrollPositionY = 0;
+	let menu = {};
+	let calendar = {};
+	let ourStory = {};
+
+	let activeSectionIndex = -1;
+	let activeSectionOffset = 200;
+	
+	$: if (scrollPositionY + activeSectionOffset > ourStory.offsetTop) {
+		activeSectionIndex = 2;
+	} else if (scrollPositionY + activeSectionOffset > calendar.offsetTop) {
+		activeSectionIndex = 1;
+	} else if (scrollPositionY + activeSectionOffset > menu.offsetTop) {
+		activeSectionIndex = 0;
+	} else {
+		activeSectionIndex = -1;
+	}
 </script>
 
-<main>
-	<Header 
-		--address-text-color="var(--text-blue)"
-		--title-text-color="hsl(48, 100%, 99%)"
-		--subtitle-text-color="var(--text-green)"
-		--banner-top-color="var(--primary-green)"
-		--banner-middle-color="var(--primary-red)"
-		--banner-bottom-color="var(--primary-blue)"
-	/> 
+<svelte:window bind:scrollY={scrollPositionY}/>
+
+<header>
+	<Header
+			--address-text-color="var(--text-blue)"
+			--title-text-color="hsl(48, 100%, 99%)"
+			--subtitle-text-color="var(--text-green)"
+			--banner-top-color="var(--primary-green)"
+			--banner-middle-color="var(--primary-red)"
+			--banner-bottom-color="var(--primary-blue)"/>
+</header>
+
+<aside>
 	<Nav 
 		--nav-item-font="var(--sans)"
 		--nav-active-item-background-color="#f7e5ab"
 		--nav-active-item-text-color="var(--text-red)"
 		--nav-inactive-item-text-color="var(--text-blue)"
+		{activeSectionIndex}
 	/>
-	<section id=main-content>
+</aside>
+
+<main>
+	<section id="menu" bind:this={menu}>
 		<Menu
 			--section-title-text-color="var(--text-red)"
 			--section-title-font="var(--sans)"
 			--section-subtitle-text-color="var(--text-green)"
 			--section-subtitle-font="var(--sans)"
 			--item-text-color="var(--text-blue)"
-			--item-font="var(--serif)"
-		/>
-		<Calendar/>
-		<OurStory 
+			--item-font="var(--serif)"/>
+	</section>
+
+	<section id="calendar" bind:this={calendar}><Calendar/></section>
+	<section id="our-story" bind:this={ourStory}>
+		<OurStory
 			--bio-font="var(--serif)"
 			--bio-text-color="var(--text-red)"
 		/>
-		{#each [...Array(40).keys()] as x}
-			<br>
-		{/each}
 	</section>
+	{#each [...Array(40).keys()] as x}
+		<br>
+	{/each}
 </main>
 
 <style>
@@ -68,12 +98,20 @@
 		overflow-x: hidden;
 	}
 
-	main {
-		background-color: var(--background-color);
+	:global(body) {
+		background-color: var(--background-color)
 	}
 
-	#main-content {
-		background-color: var(--background-color);
+	aside {
+        position: sticky;
+		float:left;
+		top: 0;
+        width: var(--width);
+        height: 100vh;
+		z-index: 1;
+    }
+
+	main {
 		padding-left: var(--nav-width); 
 		padding-top: 8.5em;
 		margin-left: 3em;

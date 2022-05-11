@@ -48,7 +48,7 @@
   // debugger;
 </script>
 
-<section id="calendar">
+<div class="section-wrapper">
   <div class="calendar-wrapper">
     <FullCalendar bind:this={calendarRef} {options}/>
   </div>
@@ -57,10 +57,10 @@
       <Map {addressText}></Map>
   </div>
   
-</section>
+</div>
 
 <style>
-  #calendar {
+  .section-wrapper {
     font-family: var(--sans);
     display: flex;
     flex-direction: row-reverse;

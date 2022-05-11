@@ -14,27 +14,27 @@
 
 </script>
 
-<header>
-    <Banner 
-        --top-color="var(--banner-top-color)"
-        --middle-color="var(--banner-middle-color)"
-        --bottom-color="var(--banner-bottom-color)"
-        {viewBox}
-        {height}
-    />
-    <div>
-        <!-- TODO: make title/subtitle text curved -->
-        <h1>
-            {titleText}
-        </h1>
-        <h2>
-            {subtitleText}
-        </h2>
-        <address>
-            Gahanna, OH | <a href="tel:+16144038051">614-403-8051</a>
-        </address>
-    </div>
-</header>
+
+<Banner 
+    --top-color="var(--banner-top-color)"
+    --middle-color="var(--banner-middle-color)"
+    --bottom-color="var(--banner-bottom-color)"
+    {viewBox}
+    {height}
+/>
+<div>
+    <!-- TODO: make title/subtitle text curved -->
+    <h1>
+        {titleText}
+    </h1>
+    <h2>
+        {subtitleText}
+    </h2>
+    <address>
+        Gahanna, OH | <a href="tel:+16144038051">614-403-8051</a>
+    </address>
+</div>
+
 
 <style>
     /* Header text - TODO: consider moving to App.svelte as --light-text */
