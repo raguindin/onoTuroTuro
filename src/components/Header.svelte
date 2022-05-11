@@ -3,8 +3,8 @@
     import Banner from 'elements/Banner.svelte'
 
     // Banner props
-    const viewBox="0 0 1460 500";
-    const height="30em"
+    const viewBox="0 0 1460 380";
+    const height="345px"
 
     // Website Title and Subtitle text
     // TODO: Update to use the CMS
@@ -52,6 +52,7 @@
     }
 
     h1, h2, address {
+        z-index: 1;
         text-align: center;
     }
     

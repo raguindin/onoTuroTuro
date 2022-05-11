@@ -1,12 +1,9 @@
 <script>
-	// Custom Component
 	import Header from "./components/Header.svelte";
 	import Nav from "./components/Nav.svelte";
 	import Menu from "./components/Menu.svelte";
 	import Calendar from "./components/Calendar.svelte";
-
-	// TODO: make this more responsive
-	const navWidth = "20em";
+	import OurStory from "./components/OurStory.svelte";
 </script>
 
 <main>
@@ -19,13 +16,12 @@
 		--banner-bottom-color="var(--primary-blue)"
 	/> 
 	<Nav 
-		--width={navWidth}
 		--nav-item-font="var(--sans)"
 		--nav-active-item-background-color="#f7e5ab"
 		--nav-active-item-text-color="var(--text-red)"
 		--nav-inactive-item-text-color="var(--text-blue)"
 	/>
-	<section style="padding-left:{navWidth}; padding-top: 8.5em" id=main-content>
+	<section id=main-content>
 		<Menu
 			--section-title-text-color="var(--text-red)"
 			--section-title-font="var(--sans)"
@@ -35,6 +31,10 @@
 			--item-font="var(--serif)"
 		/>
 		<Calendar/>
+		<OurStory 
+			--bio-font="var(--serif)"
+			--bio-text-color="var(--text-red)"
+		/>
 		{#each [...Array(40).keys()] as x}
 			<br>
 		{/each}
@@ -62,12 +62,22 @@
 		--sans: 'Mulish', sans-serif;
 		--serif: 'PT Serif', serif;
 
+		--nav-width: 20em;
+
 		/* Prevents horizontal scroll from 100vw elements with scrollbar */
 		overflow-x: hidden;
 	}
 
+	main {
+		background-color: var(--background-color);
+	}
+
 	#main-content {
 		background-color: var(--background-color);
+		padding-left: var(--nav-width); 
+		padding-top: 8.5em;
+		margin-left: 3em;
+		margin-right: 3em;
 	}
 
 	/* Reduces boilerplate by making list styling global */
@@ -77,6 +87,12 @@
 
 	:global(li) {
 		list-style-type: none;
+	}
+
+	@media only screen and (max-width: 900px) {
+		:root {
+			--nav-width: 0;
+		}
 	}
 
 </style>

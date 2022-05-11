@@ -32,6 +32,7 @@
     }
 
     aside {
+        display: block;
         position: absolute;
         left: 0;
         width: var(--width);
@@ -87,6 +88,12 @@
     a {
         text-decoration: none;
         color: inherit;
+    }
+    
+    @media only screen and (max-width: 900px) {
+        aside {
+            display: none;
+        }
     }
 </style>
 

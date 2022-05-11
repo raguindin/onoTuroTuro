@@ -35,8 +35,6 @@
 
     #menu {
         text-align: center;
-        padding-left: 8em;
-        padding-right: 8em;
     }
 
     div.menu-section {

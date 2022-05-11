@@ -8,7 +8,6 @@
     }
 
     svg {
-        z-index: -1;
         position: absolute;
         right: 0;
         width: clamp(100%, 100em, 200%);
