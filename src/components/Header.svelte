@@ -4,7 +4,7 @@
 
     // Banner props
     const viewBox="0 0 1460 380";
-    const height="345px"
+    export const height="345px"
 
     // Website Title and Subtitle text
     // TODO: Update to use the CMS

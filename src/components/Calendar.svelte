@@ -54,7 +54,7 @@
   </div>
 
   <div class="map-wrapper">
-      <Map {addressText}></Map>
+      <!-- <Map {addressText}></Map> -->
   </div>
   
 </div>

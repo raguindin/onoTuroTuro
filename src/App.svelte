@@ -7,26 +7,18 @@
 	import { onMount } from "svelte";
 
 	// svelte bindings
-	let scrollPositionY = 0;
 	let menu = {};
 	let calendar = {};
 	let ourStory = {};
+	let stickyTop = "min(4em, 40vh";
+	const navHeight = "345px";
+	let sectionTopPositions = [];
 
-	let activeSectionIndex = -1;
-	let activeSectionOffset = 200;
-	
-	$: if (scrollPositionY + activeSectionOffset > ourStory.offsetTop) {
-		activeSectionIndex = 2;
-	} else if (scrollPositionY + activeSectionOffset > calendar.offsetTop) {
-		activeSectionIndex = 1;
-	} else if (scrollPositionY + activeSectionOffset > menu.offsetTop) {
-		activeSectionIndex = 0;
-	} else {
-		activeSectionIndex = -1;
-	}
+	onMount( () => {
+		sectionTopPositions = [menu.offsetTop, calendar.offsetTop, ourStory.offsetTop];
+	});
+
 </script>
-
-<svelte:window bind:scrollY={scrollPositionY}/>
 
 <header>
 	<Header
@@ -38,13 +30,14 @@
 			--banner-bottom-color="var(--primary-blue)"/>
 </header>
 
-<aside>
+<aside style="top: {stickyTop}">
 	<Nav 
 		--nav-item-font="var(--sans)"
 		--nav-active-item-background-color="#f7e5ab"
 		--nav-active-item-text-color="var(--text-red)"
 		--nav-inactive-item-text-color="var(--text-blue)"
-		{activeSectionIndex}
+		height = {navHeight}
+		{sectionTopPositions}
 	/>
 </aside>
 
@@ -102,14 +95,54 @@
 		background-color: var(--background-color)
 	}
 
+	header {
+		position: relative;
+	}
+
+	/* TODO: add keyframes for banner load animation */
+	/* @keyframes banner-drawing {
+		from {
+			width: 100%;
+		}
+		to {
+			width: 0%
+		}
+	} */
+
+	/* header::after {
+        background-color: var(--background-color);
+		display: block;
+		position: absolute;
+		top: 0;
+		right: 0;
+        width: 100%;
+        height: 100%;
+		z-index: 10;
+        content: "";
+	}
+
+	header.animate::after {
+		animation: banner-drawing 1.5s ease-in-out 1s 1 normal forwards;
+    } */
+
 	aside {
         position: sticky;
-		float:left;
-		top: 0;
-        width: var(--width);
+		float: left;
+        width: var(--nav-width);
         height: 100vh;
-		z-index: 1;
+		z-index: 2;
     }
+
+	aside::before {
+        background: var(--background-color);
+        background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%); 
+		position: fixed;
+		width: var(--nav-width);
+		top: 0;
+		height: 100%;
+		content: "";
+		z-index: 1;
+	}
 
 	main {
 		padding-left: var(--nav-width); 
@@ -131,6 +164,9 @@
 		:root {
 			--nav-width: 0;
 		}
-	}
+        aside {
+            display: none;
+        }
+    }
 
 </style>

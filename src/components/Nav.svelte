@@ -3,30 +3,35 @@
     const section_ids = sections.map(x => x.replace(/\s/g , "-").toLowerCase());
 
     export let activeSectionIndex = null;
+    export let sectionTopPositions = [];
     let windowOuterHeight;
-
-    // TODO: change active section dynamically based on where we are in the page
+    let scrollPositionY = 0;
+	let activeSectionOffset = 200;
+    $: sectionTopPositions.forEach( (offsetTop, index) => {
+        if (scrollPositionY + activeSectionOffset > offsetTop) {
+            activeSectionIndex = index;
+        }
+    })
+    $: if (scrollPositionY < activeSectionOffset) activeSectionIndex = null;
 
 </script>
 
-<svelte:window bind:innerHeight={windowOuterHeight}/>
+<svelte:window bind:innerHeight={windowOuterHeight} bind:scrollY={scrollPositionY}/>
 
-<aside>
-    <nav>
-        <ul>
-            {#each sections as section, index}
-                <li id={index} on:click="{() => activeSectionIndex=index}"
-                    class={index === activeSectionIndex ? 'isActive' : 'notActive'}>
-                    <a href="#{section_ids[index]}">{section}</a>
-                </li>
-            {/each}
-        </ul>
-    </nav>
-</aside>
+
+<nav>
+    <ul>
+        {#each sections as section, index}
+            <li id={index} on:click="{() => activeSectionIndex=index}"
+                class={index === activeSectionIndex ? 'isActive' : 'notActive'}>
+                <a href="#{section_ids[index]}">{section}</a>
+            </li>
+        {/each}
+    </ul>
+</nav>
+
 
 <style>
-    /* Animation for when a menu element becomes active */
-    /* TODO: consider different name? */
     @keyframes active-nav-expand {
         from {
             width: 0vw;
@@ -44,8 +49,6 @@
         justify-content: flex-start;
         height: 100%;
     }
-
-    
     
     /* TODO: make non-active li elements also stick relative to the active element */
 
@@ -57,37 +60,21 @@
         font-weight: 800;
         letter-spacing: 1px;
         font-size: 2em;
-        /* position: sticky; */
-        /* display: block; */
         padding-left: 1em;
         margin-top: 0.5em;
         margin-bottom: 0.5em;
         white-space: nowrap;
+        z-index: 3;
     }
 
     li.isActive {
-        /* position: sticky;
-        top: 50px; */
         background: var(--nav-active-item-background-color);
         color: var(--nav-active-item-text-color);
         animation-name: active-nav-expand;
         animation-timing-function: ease-in;
         animation-duration: 0.1s;
         animation-fill-mode: forwards;
-        /* width: 100vw; */
-        /* max-width: 100%; */
     }
-/* 
-    .isActive::before {
-        position: sticky;
-        margin-top: -50px;
-        padding-top: 50px;
-        margin-left: -1em;
-        width: 100vw;
-        background: var(--background-color);
-        display: block;
-        content: "";
-    } */
 
     li.notActive {
         color: var(--nav-inactive-item-text-color);
@@ -96,12 +83,6 @@
     a {
         text-decoration: none;
         color: inherit;
-    }
-    
-    @media only screen and (max-width: 900px) {
-        aside {
-            display: none;
-        }
     }
 </style>
 
