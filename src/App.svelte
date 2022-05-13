@@ -6,6 +6,9 @@
 	import OurStory from "./components/OurStory.svelte";
 	import { onMount } from "svelte";
 
+	// icons
+	import { Facebook, Mail } from "lucide-svelte";
+
 	// svelte bindings
 	let menu = {};
 	let calendar = {};
@@ -17,6 +20,19 @@
 	onMount( () => {
 		sectionTopPositions = [menu.offsetTop, calendar.offsetTop, ourStory.offsetTop];
 	});
+
+	const socials = [
+		{
+			name: "Facebook",
+			href: "https://www.facebook.com/onoturoturo/",
+			icon: Facebook
+		},
+		{
+			name: "Email",
+			href: "onoturoturo@gmail.com",
+			icon: Mail
+		}
+	]
 
 </script>
 
@@ -58,10 +74,20 @@
 			--bio-text-color="var(--text-red)"
 		/>
 	</section>
-	{#each [...Array(40).keys()] as x}
-		<br>
-	{/each}
 </main>
+
+<footer>
+	<h5>Follow us!</h5>
+	<div class="social-media-container">
+		{#each socials as social}
+			<a href={social.href}>
+				<div class="icon-wrapper">
+					<svelte:component class=socialIcon alt={social.name} this={social.icon} size=100% color="var(--social-text-color)" strokeWidth=1 />
+				</div>
+			</a>
+		{/each}
+	</div>
+</footer>
 
 <style>
 	/* Google fonts */
@@ -86,6 +112,7 @@
 		--serif: 'PT Serif', serif;
 
 		--nav-width: 20em;
+		--social-text-color: var(--text-light);
 
 		/* Prevents horizontal scroll from 100vw elements with scrollbar */
 		overflow-x: hidden;
@@ -154,6 +181,52 @@
 	:global(li) {
 		list-style-type: none;
 	}
+
+	footer {
+		padding-top: 1.5em;
+		padding-bottom: 1.5em;
+		background-color: var(--primary-red);
+		--content-width: 40em;
+		--footer-padding: calc( 50vw - (var(--content-width) / 2) )
+		padding-left: var(--footer-padding);
+		padding-right: var(--footer-padding);
+		text-align: center;
+	}
+
+	h5 {
+		color: var(--text-light);
+		text-transform: uppercase;
+		font-size: 2em;
+		font-family: var(--sans);
+		margin: 0;
+		margin-top: 1em;
+		margin-bottom: 1em;
+	}
+
+	div.social-media-container {
+		display: flex;
+		flex-wrap: wrap;
+		flex-direction: row;
+		justify-content: center;
+		gap: 1.5em;
+	}
+
+	div.icon-wrapper {
+		border: 0.2em solid white;
+		width: 4em;
+		height: 4em;
+		border-radius: 100%;
+		padding: 1em;
+		background-color: inherit;
+	}
+
+	div.icon-wrapper:hover {
+		/* filter: brightness(0%); */
+		background-color: hsl(7, 45%, 55%);
+		transition: background-color 0.05s;
+	}
+
+	
 
 	@media only screen and (max-width: 900px) {
 		:root {

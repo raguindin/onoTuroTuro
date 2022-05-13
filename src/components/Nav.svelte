@@ -76,7 +76,14 @@
         height: 100%;
     }
     
-    /* TODO: make non-active li elements also stick relative to the active element */
+    @keyframes backgroundSwipe {
+        from {
+            width: 0%;
+        }
+        to {
+            width: 100%;
+        }
+    }
 
     li {
         font-family: var(--nav-item-font);
@@ -91,7 +98,7 @@
         margin-bottom: 0.5em;
         white-space: nowrap;
         z-index: 3;
-        width: 0%;
+        width: 100%;
         color: var(--nav-inactive-item-text-color);
     }
 
@@ -99,12 +106,19 @@
         background: var(--nav-active-item-background-color);
         color: var(--nav-active-item-text-color);
         width: 100%;
-        transition: width 0.2s;
-
+        background-size: 100% 100%;
+        animation: backgroundSwipe 1s normal forwards;
     }
 
     li.notActive {
         color: var(--nav-inactive-item-text-color);
+    }
+
+    li.notActive:hover {
+        background-color: white;
+        width: 80%;
+        border-radius: 10px;
+        
     }
 
 
