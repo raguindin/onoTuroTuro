@@ -141,7 +141,7 @@
 
 	main {
 		padding-left: var(--nav-width);
-		padding-top: 8.5em;
+		padding-top: 5em;
 		margin-left: 3em;
 		margin-right: 3em;
 	}
