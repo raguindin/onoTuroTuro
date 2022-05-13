@@ -120,6 +120,15 @@
 		font-size: min(3.5vw, 100%);
 	}
 
+	:global(html) {
+		scroll-behavior: smooth;
+	}
+
+	@media screen and (prefers-reduced-motion: reduce) {
+		:global(html) {
+			scroll-behavior: auto;
+		}
+	}
 	:global(h3) {
 		font-size: 3.4em;
         color: var(--text-red);
