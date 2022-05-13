@@ -1,0 +1,38 @@
+@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@400;500;600;700;800;900&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+:root {
+    --background: hsl(46, 100%, 93%);
+    --text-b: hsl(234, 24%, 38%);
+    --text-g: hsl(106, 24%, 34%); 
+    --text-r: var(--primary-r);
+
+    --sans: 'Mulish', sans-serif;
+    --serif: 'PT Serif', serif;
+}
+
+body {
+    text-align: center;
+    background-color: var(--background); 
+    color: var(--text-b);
+    font-family: var(--serif);
+    font-size: 1em;
+    text-align: center;
+    margin-top: 0.2em;
+    letter-spacing: 1px;
+}
+
+h1 {
+    font-family: var(--sans);
+    font-size: 3em;
+    color: var(--text-r);
+    text-transform: uppercase;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+img {
+    height: 13em;
+    width: 13em;
+    margin: auto;
+}
+

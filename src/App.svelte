@@ -1,80 +1,167 @@
 <script>
-	// imports
-	import Normalize from "./dependencies/Normalize.svelte";
 	import Header from "./components/Header.svelte";
 	import Nav from "./components/Nav.svelte";
 	import Menu from "./components/Menu.svelte";
+	import Calendar from "./components/Calendar.svelte";
+	import OurStory from "./components/OurStory.svelte";
+	import { onMount } from "svelte";
 
-	let navWidth = "20em";
+	// svelte bindings
+	let menu = {};
+	let calendar = {};
+	let ourStory = {};
+	let stickyTop = "min(4em, 40vh";
+	const navHeight = "345px";
+	let sectionTopPositions = [];
 
-	let temp = []
-	for (let i = 0; i < 20; i++) {
-		temp.push(i);
-	}
+	onMount( () => {
+		sectionTopPositions = [menu.offsetTop, calendar.offsetTop, ourStory.offsetTop];
+	});
+
 </script>
 
+<header>
+	<Header
+			--address-text-color="var(--text-blue)"
+			--title-text-color="hsl(48, 100%, 99%)"
+			--subtitle-text-color="var(--text-green)"
+			--banner-top-color="var(--primary-green)"
+			--banner-middle-color="var(--primary-red)"
+			--banner-bottom-color="var(--primary-blue)"/>
+</header>
+
+<aside style="top: {stickyTop}">
+	<Nav 
+		--nav-item-font="var(--sans)"
+		--nav-active-item-background-color="#f7e5ab"
+		--nav-active-item-text-color="var(--text-red)"
+		--nav-inactive-item-text-color="var(--text-blue)"
+		{sectionTopPositions}
+	/>
+</aside>
+
 <main>
-	<Normalize/>
-	<Header/>
-	<Nav --width={navWidth}/>
-	<section style="padding-left:{navWidth}; padding-top: 8.5em" id=main-content>
-		<Menu/>
-		{#each temp as i}
-			<p>
-				Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-			</p>	
-		{/each}
+	<section id="menu" bind:this={menu}>
+		<Menu
+			--section-title-text-color="var(--text-red)"
+			--section-title-font="var(--sans)"
+			--section-subtitle-text-color="var(--text-green)"
+			--section-subtitle-font="var(--sans)"
+			--item-text-color="var(--text-blue)"
+			--item-font="var(--serif)"/>
 	</section>
 
-	<script>
-		if (window.netlifyIdentity) {
-			window.netlifyIdentity.on("init", user => {
-			if (!user) {
-				window.netlifyIdentity.on("login", () => {
-				document.location.href = "/admin/";
-				});
-			}
-			});
-		}
-	</script>
+	<section id="calendar" bind:this={calendar}><Calendar/></section>
+	<section id="our-story" bind:this={ourStory}>
+		<OurStory
+			--bio-font="var(--serif)"
+			--bio-text-color="var(--text-red)"
+		/>
+	</section>
+	{#each [...Array(40).keys()] as x}
+		<br>
+	{/each}
 </main>
 
-<style global>
+<style>
+	/* Google fonts */
 	@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@400;500;600;700;800;900&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
 	:root {
 		/* Frequently used colors */
-		--primary-g: hsl(105, 23%, 40%);
-		--primary-b: hsl(234, 21%, 48%);
-		--primary-r: hsl(7, 45%, 42%);
-		--primary-y: hsl(45, 78%, 65%);
-		--background: hsl(46, 100%, 93%);
-		--text-b: hsl(234, 24%, 38%);
-		--text-g: hsl(106, 24%, 34%); 
-		--text-r: var(--primary-r);
+		--primary-green: hsl(105, 23%, 40%);
+		--primary-blue: hsl(234, 21%, 48%);
+		--primary-red: hsl(7, 45%, 42%);
+		--primary-yellow: hsl(45, 78%, 65%);
+		--background-color: hsl(46, 100%, 93%);
+		--background-light: hsl(46, 100%, 97%);
 
-		/* Font families */
+		/* Slightly adjusted colors for text */
+		--text-blue: hsl(234, 24%, 38%);
+		--text-green: hsl(106, 24%, 34%); 
+		--text-red: var(--primary-red);
+		--text-light: hsl(48, 100%, 99%);
+
 		--sans: 'Mulish', sans-serif;
 		--serif: 'PT Serif', serif;
+
+		--nav-width: 20em;
+
+		/* Prevents horizontal scroll from 100vw elements with scrollbar */
 		overflow-x: hidden;
+
+		font-size: min(3.5vw, 100%);
 	}
 
-	#main-content {
-		background-color: var(--background);
-		/* margin-left: 20em; */
+	:global(h3) {
+		font-size: 3.4em;
+        color: var(--text-red);
+        font-family: var(--sans);
+        text-transform: uppercase;
+        font-weight: 800;
+        letter-spacing: 1px;
+        margin: 0px;
+		text-align: center;
 	}
 
-	p {
-		margin: auto;
-		width: 50%;
+	  
+	:target::before {
+		content: "";
+		display: block;
+		height: 30px; /* fixed header height*/
+		margin: -30px 0 0; /* negative fixed header height */
 	}
 
-	ul {
+	:global(body) {
+		background-color: var(--background-color)
+	}
+
+	header {
+		position: relative;
+	}
+
+	aside {
+        position: sticky;
+		float: left;
+        width: var(--nav-width);
+        height: 100vh;
+		z-index: 2;
+    }
+
+	aside::before {
+        background: var(--background-color);
+        background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%); 
+		position: fixed;
+		width: var(--nav-width);
+		top: 0;
+		height: 100%;
+		content: "";
+		z-index: 1;
+	}
+
+	main {
+		padding-left: var(--nav-width);
+		padding-top: 8.5em;
+		margin-left: 3em;
+		margin-right: 3em;
+	}
+
+	/* Reduces boilerplate by making list styling global */
+	:global(ul) {
         padding-inline-start: 0;
 	}
 
-	li {
+	:global(li) {
 		list-style-type: none;
 	}
+
+	@media only screen and (max-width: 900px) {
+		:root {
+			--nav-width: 0;
+		}
+        aside {
+            display: none;
+        }
+    }
 
 </style>
