@@ -49,18 +49,28 @@
 </script>
 
 <div class="section-wrapper">
-  <div class="calendar-wrapper">
-    <FullCalendar bind:this={calendarRef} {options}/>
-  </div>
-
-  <div class="map-wrapper">
-      <!-- <Map {addressText}></Map> -->
-  </div>
+  <h3>Calendar</h3>
+  <div class="flex-wrapper">
+    <div class="calendar-wrapper">
+      <FullCalendar bind:this={calendarRef} {options}/>
+    </div>
   
+    <div class="map-wrapper">
+        <!-- <Map {addressText}></Map> -->
+    </div>
+  
+  </div>
 </div>
 
 <style>
-  .section-wrapper {
+  div.section-wrapper {
+    background-color: var(--background-light);
+    padding-bottom: 5em;
+    padding-top: 3em;
+  }
+
+  .flex-wrapper {
+    margin-top: 3em;
     font-family: var(--sans);
     display: flex;
     flex-direction: row-reverse;

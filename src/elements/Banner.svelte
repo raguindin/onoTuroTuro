@@ -11,13 +11,14 @@
         position: absolute;
         right: 0;
         width: clamp(100%, 100em, 200%);
+        height: min(80vw,var(--height));
         font-family: 'Mulish', sans-serif;
 
         color: var(--heading-text);
     }
 </style>
 
-<svg xmlns="http://www.w3.org/2000/svg" {viewBox} {height} {preserveAspectRatio} version="1.0">
+<svg xmlns="http://www.w3.org/2000/svg" {viewBox} {preserveAspectRatio} version="1.0">
 
     <path fill="#FFF" d="M-144-30h1728v360H-144z" />
     

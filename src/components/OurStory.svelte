@@ -1,16 +1,24 @@
 <div class="section-wrapper">
-    <figure>
-        <img src="media/family.png" alt="Our family">
-        <figcaption>Our Family</figcaption>
-    </figure>
-    <div class="bio-wrapper">
-        <p>Story of the food truck will go here</p>
+    <h3>Our Story</h3>
+    <div class="flex-wrapper">
+        <figure>
+            <img src="media/family.png" alt="Our family">
+            <figcaption>Our Family</figcaption>
+        </figure>
+        <div class="bio-wrapper">
+            <p>Story of the food truck will go here</p>
+        </div>
     </div>
 </div>
 
 <style>
-    .section-wrapper {
-        margin-top: 5em;
+    div.section-wrapper {
+        padding-top: 5em;
+        padding-bottom: 5em;
+    }
+
+    .flex-wrapper {
+        margin-top: 3em;
         display: flex;
         align-items: flex-start;
         justify-content: center;

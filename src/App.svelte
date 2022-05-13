@@ -36,7 +36,6 @@
 		--nav-active-item-background-color="#f7e5ab"
 		--nav-active-item-text-color="var(--text-red)"
 		--nav-inactive-item-text-color="var(--text-blue)"
-		height = {navHeight}
 		{sectionTopPositions}
 	/>
 </aside>
@@ -75,6 +74,7 @@
 		--primary-red: hsl(7, 45%, 42%);
 		--primary-yellow: hsl(45, 78%, 65%);
 		--background-color: hsl(46, 100%, 93%);
+		--background-light: hsl(46, 100%, 97%);
 
 		/* Slightly adjusted colors for text */
 		--text-blue: hsl(234, 24%, 38%);
@@ -89,6 +89,27 @@
 
 		/* Prevents horizontal scroll from 100vw elements with scrollbar */
 		overflow-x: hidden;
+
+		font-size: min(3.5vw, 100%);
+	}
+
+	:global(h3) {
+		font-size: 3.4em;
+        color: var(--text-red);
+        font-family: var(--sans);
+        text-transform: uppercase;
+        font-weight: 800;
+        letter-spacing: 1px;
+        margin: 0px;
+		text-align: center;
+	}
+
+	  
+	:target::before {
+		content: "";
+		display: block;
+		height: 30px; /* fixed header height*/
+		margin: -30px 0 0; /* negative fixed header height */
 	}
 
 	:global(body) {
@@ -98,32 +119,6 @@
 	header {
 		position: relative;
 	}
-
-	/* TODO: add keyframes for banner load animation */
-	/* @keyframes banner-drawing {
-		from {
-			width: 100%;
-		}
-		to {
-			width: 0%
-		}
-	} */
-
-	/* header::after {
-        background-color: var(--background-color);
-		display: block;
-		position: absolute;
-		top: 0;
-		right: 0;
-        width: 100%;
-        height: 100%;
-		z-index: 10;
-        content: "";
-	}
-
-	header.animate::after {
-		animation: banner-drawing 1.5s ease-in-out 1s 1 normal forwards;
-    } */
 
 	aside {
         position: sticky;
@@ -145,7 +140,7 @@
 	}
 
 	main {
-		padding-left: var(--nav-width); 
+		padding-left: var(--nav-width);
 		padding-top: 8.5em;
 		margin-left: 3em;
 		margin-right: 3em;

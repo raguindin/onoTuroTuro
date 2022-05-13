@@ -1,47 +1,73 @@
 <script>
     const sections = ["Menu", "Calendar", "Our Story"];
+    class Section {
+        constructor(_name, _topPos) {
+            this.name  = _name;
+            this.id = _name.replace(/\s/g , "-").toLowerCase();
+            this.topPosition = _topPos;
+        }
+    }
+
     const section_ids = sections.map(x => x.replace(/\s/g , "-").toLowerCase());
 
-    export let activeSectionIndex = null;
+    let activeSectionIndex = null;
     export let sectionTopPositions = [];
-    let windowOuterHeight;
+
+    let viewportHeight;
     let scrollPositionY = 0;
 	let activeSectionOffset = 200;
-    $: sectionTopPositions.forEach( (offsetTop, index) => {
-        if (scrollPositionY + activeSectionOffset > offsetTop) {
-            activeSectionIndex = index;
-        }
+
+    // $: sectionTopPositions.forEach( (offsetTop, index) => {
+    //     if (scrollPositionY > 10 && index === 0) {
+    //         activeSectionIndex = index;
+    //     } else if (scrollPositionY + activeSectionOffset > offsetTop) {
+    //         activeSectionIndex = index;
+    //     }
+    // })
+
+    $: activeSectionIndex = sectionTopPositions.length - 1 - sectionTopPositions.slice().reverse().findIndex( ( offsetTop, index, arr) => {
+        if (scrollPositionY > 10 && index === arr.length - 1) return true;
+        if (scrollPositionY + activeSectionOffset > offsetTop) return true;
+        return false;
     })
-    $: if (scrollPositionY < activeSectionOffset) activeSectionIndex = null;
+
+    // Below determines when the next approaching section is on screen
+    let nextSectionApproaching = false;
+    $: nextSectionIndex = activeSectionIndex + 1;
+    $: if (scrollPositionY + viewportHeight > sectionTopPositions[nextSectionIndex]) {
+        nextSectionApproaching = true; 
+    } else {
+        nextSectionApproaching = false;
+    }
+
+
 
 </script>
 
-<svelte:window bind:innerHeight={windowOuterHeight} bind:scrollY={scrollPositionY}/>
+<svelte:window bind:innerHeight={viewportHeight} bind:scrollY={scrollPositionY}/>
+
 
 
 <nav>
     <ul>
         {#each sections as section, index}
-            <li id={index} on:click="{() => activeSectionIndex=index}"
-                class={index === activeSectionIndex ? 'isActive' : 'notActive'}>
-                <a href="#{section_ids[index]}">{section}</a>
-            </li>
+            <a href="#{section_ids[index]}">
+                <li id={index} 
+                    on:click="{() => activeSectionIndex=index}"
+                    class="{
+                        index === activeSectionIndex ? 'isActive' 
+                        : index === nextSectionIndex && nextSectionApproaching ? 'isApproaching' 
+                        : 'notActive'
+                        }">
+                    {section}
+                </li>
+            </a>
         {/each}
     </ul>
 </nav>
 
 
 <style>
-    @keyframes active-nav-expand {
-        from {
-            width: 0vw;
-        }
-
-        to {
-            width: 100%;
-        }
-    }
-
     ul {
         display: flex;
         top: 0;
@@ -65,22 +91,25 @@
         margin-bottom: 0.5em;
         white-space: nowrap;
         z-index: 3;
+        width: 0%;
+        color: var(--nav-inactive-item-text-color);
     }
 
     li.isActive {
         background: var(--nav-active-item-background-color);
         color: var(--nav-active-item-text-color);
-        animation-name: active-nav-expand;
-        animation-timing-function: ease-in;
-        animation-duration: 0.1s;
-        animation-fill-mode: forwards;
+        width: 100%;
+        transition: width 0.2s;
+
     }
 
     li.notActive {
         color: var(--nav-inactive-item-text-color);
     }
 
+
     a {
+        z-index: 3;
         text-decoration: none;
         color: inherit;
     }

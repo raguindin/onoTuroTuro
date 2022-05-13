@@ -20,7 +20,7 @@
     --middle-color="var(--banner-middle-color)"
     --bottom-color="var(--banner-bottom-color)"
     {viewBox}
-    {height}
+    --height={height}
 />
 <div>
     <!-- TODO: make title/subtitle text curved -->
@@ -31,7 +31,7 @@
         {subtitleText}
     </h2>
     <address>
-        Gahanna, OH | <a href="tel:+16144038051">614-403-8051</a>
+        Gahanna, OH, <a href="tel:+16144038051">614-403-8051</a>
     </address>
 </div>
 
@@ -47,7 +47,7 @@
         display: inline-grid;
         /* clamp ensures the main column stays a proper size on the screen */
         grid-template-columns: 1fr clamp(50%, 50em, 100%);
-        grid-template-rows: 6em 6em 3em 3em;
+        grid-template-rows: 6em minmax(6em, min-content) auto auto;
         width: 100%;
     }
 
@@ -58,7 +58,7 @@
     
     a {
         text-decoration: none;
-        color: var(--address-text-color);
+        color: var(--text-red);
     }
 
     a:hover {
@@ -73,7 +73,7 @@
         margin: 0px;
         font-family: 'Mulish', sans-serif;
         text-transform: uppercase;
-        font-size: clamp(1vw, 4em, 12vw);
+        font-size: clamp(1vw, 4em, 15vw);
         text-shadow: 2px 2px 8px black;
         font-weight: 800;
     }
@@ -83,7 +83,7 @@
         font-family: 'PT Serif', serif;
         grid-column: 2;
         grid-row: 3;
-        font-size: clamp(1vw, 2.4em, 7vw);
+        font-size: clamp(1vw, 2.4em, 10vw);
         color: var(--subtitle-text-color);
         font-style: italic;
         font-weight: 700;
@@ -94,7 +94,7 @@
         color: var(--address-text-color);
         grid-column: 2;
         grid-row: 4;
-        font-size: 2em;
+        font-size: min(2em, 9vw);
         text-transform: uppercase;
     }
 

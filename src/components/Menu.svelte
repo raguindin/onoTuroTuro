@@ -71,4 +71,10 @@
         grid-auto-rows: auto;
         grid-gap: 5px;
     }
+
+    @media screen and (max-width: 30em) {
+        ul {
+            grid-template-columns: minmax(100%, 21em);
+        }
+    }
 </style>
