@@ -13,7 +13,7 @@
 	let menu = {};
 	let calendar = {};
 	let ourStory = {};
-	let stickyTop = "min(4em, 40vh";
+	let stickyTop = "min(4em, 40vh)";
 	const navHeight = "345px";
 	let sectionTopPositions = [];
 

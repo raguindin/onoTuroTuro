@@ -3,7 +3,7 @@
 </script>
 
     <li>
-        <img {src} alt="{name}">
+        <img src="https://luke-shafer-web-design.mo.cloudinary.net/onoturoturo/{src}?tx=c_fill,g_auto,h_272,w_272" alt="">
         <p> {name} <strong>${price}</strong></p>
     </li>
 
