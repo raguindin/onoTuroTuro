@@ -2,7 +2,7 @@
     <h3>Our Story</h3>
     <div class="flex-wrapper">
         <figure>
-            <img src="https://luke-shafer-web-design.mo.cloudinary.net/onoturoturo/media/family.png" alt="Our family">
+            <img src="https://luke-shafer-web-design.mo.cloudinary.net/onoturoturo/media/family.png?tx=c_scale,w_432" alt="Our family">
             <figcaption>Our Family</figcaption>
         </figure>
         <div class="bio-wrapper">
