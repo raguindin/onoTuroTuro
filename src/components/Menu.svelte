@@ -3,6 +3,11 @@
 
     // menu.json is populated from the CMS
     import menu from "../../public/content/menu.json"
+    import {fileNames} from "../lib/getMenu.js"
+
+    console.log(fileNames);
+    
+    // import secondMenu from 
     
     // Example of sections: Combo Plates, Additional Items
     const sections = menu.sections;
