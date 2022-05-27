@@ -1,92 +1,97 @@
 <script>
-	import Header from "./components/Header.svelte";
-	import Nav from "./components/Nav.svelte";
-	import Menu from "./components/Menu.svelte";
-	import Calendar from "./components/Calendar.svelte";
-	import OurStory from "./components/OurStory.svelte";
-	import { onMount } from "svelte";
+  import Header from './components/Header.svelte';
+  import Nav from './components/Nav.svelte';
+  import Menu from './components/Menu.svelte';
+  import Calendar from './components/Calendar.svelte';
+  import OurStory from './components/OurStory.svelte';
+  import { onMount } from 'svelte';
+  import content from './lib/filenames.json';
 
-	// icons
-	import { Facebook, Mail } from "lucide-svelte";
+  // icons
+  import { Facebook, Mail } from 'lucide-svelte';
+  // svelte bindings
+  let menu = {};
+  let calendar = {};
+  let ourStory = {};
+  let stickyTop = 'min(4em, 40vh)';
+  const navHeight = '345px';
+  let sectionTopPositions = [];
 
-	// svelte bindings
-	let menu = {};
-	let calendar = {};
-	let ourStory = {};
-	let stickyTop = "min(4em, 40vh)";
-	const navHeight = "345px";
-	let sectionTopPositions = [];
+  onMount(() => {
+    sectionTopPositions = [
+      menu.offsetTop,
+      calendar.offsetTop,
+      ourStory.offsetTop,
+    ];
+  });
 
-	onMount( () => {
-		sectionTopPositions = [menu.offsetTop, calendar.offsetTop, ourStory.offsetTop];
-	});
-
-	const socials = [
-		{
-			name: "Facebook",
-			href: "https://www.facebook.com/onoturoturo/",
-			icon: Facebook
-		},
-		{
-			name: "Email",
-			href: "onoturoturo@gmail.com",
-			icon: Mail
-		}
-	]
-
+  const socials = [
+    {
+      name: 'Facebook',
+      href: 'https://www.facebook.com/onoturoturo/',
+      icon: Facebook,
+    },
+    {
+      name: 'Email',
+      href: 'onoturoturo@gmail.com',
+      icon: Mail,
+    },
+  ];
 </script>
 
 <header>
-	<Header
-			--address-text-color="var(--text-blue)"
-			--title-text-color="hsl(48, 100%, 99%)"
-			--subtitle-text-color="var(--text-green)"
-			--banner-top-color="var(--primary-green)"
-			--banner-middle-color="var(--primary-red)"
-			--banner-bottom-color="var(--primary-blue)"/>
+  <Header
+    --address-text-color="var(--text-blue)"
+    --title-text-color="hsl(48, 100%, 99%)"
+    --subtitle-text-color="var(--text-green)"
+    --banner-top-color="var(--primary-green)"
+    --banner-middle-color="var(--primary-red)"
+    --banner-bottom-color="var(--primary-blue)" />
 </header>
 
 <aside style="top: {stickyTop}">
-	<Nav 
-		--nav-item-font="var(--sans)"
-		--nav-active-item-background-color="#f7e5ab"
-		--nav-active-item-text-color="var(--text-red)"
-		--nav-inactive-item-text-color="var(--text-blue)"
-		{sectionTopPositions}
-	/>
+  <Nav
+    --nav-item-font="var(--sans)"
+    --nav-active-item-background-color="#f7e5ab"
+    --nav-active-item-text-color="var(--text-red)"
+    --nav-inactive-item-text-color="var(--text-blue)"
+    {sectionTopPositions} />
 </aside>
 
 <main>
-	<section id="menu" bind:this={menu}>
-		<Menu
-			--section-title-text-color="var(--text-red)"
-			--section-title-font="var(--sans)"
-			--section-subtitle-text-color="var(--text-green)"
-			--section-subtitle-font="var(--sans)"
-			--item-text-color="var(--text-blue)"
-			--item-font="var(--serif)"/>
-	</section>
+  <section id="menu" bind:this={menu}>
+    <Menu
+      --section-title-text-color="var(--text-red)"
+      --section-title-font="var(--sans)"
+      --section-subtitle-text-color="var(--text-green)"
+      --section-subtitle-font="var(--sans)"
+      --item-text-color="var(--text-blue)"
+      --item-font="var(--serif)" />
+  </section>
 
-	<section id="calendar" bind:this={calendar}><Calendar/></section>
-	<section id="our-story" bind:this={ourStory}>
-		<OurStory
-			--bio-font="var(--serif)"
-			--bio-text-color="var(--text-red)"
-		/>
-	</section>
+  <section id="calendar" bind:this={calendar}><Calendar /></section>
+  <section id="our-story" bind:this={ourStory}>
+    <OurStory --bio-font="var(--serif)" --bio-text-color="var(--text-red)" />
+  </section>
 </main>
 
 <footer>
-	<h5>Follow us!</h5>
-	<div class="social-media-container">
-		{#each socials as social}
-			<a href={social.href}>
-				<div class="icon-wrapper">
-					<svelte:component class=socialIcon alt={social.name} this={social.icon} size=100% color="var(--social-text-color)" strokeWidth=1 />
-				</div>
-			</a>
-		{/each}
-	</div>
+  <h5>Follow us!</h5>
+  <div class="social-media-container">
+    {#each socials as social}
+      <a href={social.href}>
+        <div class="icon-wrapper">
+          <svelte:component
+            this={social.icon}
+            class="socialIcon"
+            alt={social.name}
+            size="100%"
+            color="var(--social-text-color)"
+            strokeWidth="1" />
+        </div>
+      </a>
+    {/each}
+  </div>
 </footer>
 
 <style>
