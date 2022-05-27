@@ -1,0 +1,86 @@
+backend:
+  name: git-gateway
+  branch: master
+
+# publish_mode: editorial_workflow
+media_folder: "public/media/uploads"
+public_folder: "media/uploads"
+
+collections:
+  - name: menu
+    label: Menu
+    label_singular: "Menu Section"
+    description: >
+      Update the contents for the food truck menu, based on the section the food item
+      appears in.
+    extension: json
+    folder: public/content/_menu
+    slug: '{{year}}{{month}}{{day}}{{hour}{{minute}{{second}}-{{slug}}'
+    summary: '{{title}}'
+    create: true
+    delete: true
+    fields: 
+      - { label: 'Section Name', name: title, widget: string, tagname: h1 }
+      - { label: 'Subtitle', name: subtitle, widget: string, required: false }
+      - label: 'Food Items'
+        name: items
+        widget: list
+        label_singular: 'Food Item'
+        summary: '{{fields.name}}'
+        tagname: div
+        fields:
+          - { label: 'Name', name: name, widget: string }
+          - { label: 'Price', name: price, widget: number, min: 0 }
+          - {label: Photo, name: src, widget: image, allow_multiple: false }
+
+  - name: calendar
+    label: Calendar
+    label_singular: "Event"
+    description: >
+      Add all upcoming events and locations for the truck here.
+    extension: json
+    folder: public/content/_calendar
+    slug: '{{fields.eventdate}}-{{starttime}}-{{name}}'
+    summary: '{{fields.eventdate}} at {{starttime}} - {{name}}'
+    create: true
+    delete: true
+    # TODO: add filter to hide past events
+    fields:
+      - { label: Name, name: name, widget: string, tagname: h1,
+          hint: "Examples: *Food truck festival, Company Office Lunch, Creekside*" }
+      - { label: "Address", name: address, widget: string }
+      - { label: "Date", name: eventdate, widget: datetime, default: "", time_format: false, format: "YYYY-MM-DD" }
+      - { label: "Start Time", name: starttime, widget: datetime, default: "", date_format: false, format: "HH:mm" }
+      - { label: "End Time", name: endtime, widget: datetime, default: "", date_format: false, format: "HH:mm" }
+      - { label: "Event Description", name: body, widget: markdown, required: false }
+
+    # Below is the current, single-file-based implementation. 
+  - name: "main"
+    label: "Ono Turo-Turo"
+    extension: json
+    files:
+      - name: menu
+        label: "Menu"
+        delete: false
+        file: "public/content/menu.json"
+        fields: 
+          - name: sections
+            label: "Menu Sections"
+            label_singular: "Menu Section"
+            create: true
+            delete: true
+            widget: "list"
+            fields: 
+              - {label: "Section Title", name: title, widget: string}
+              - {label: "Section Subtitle", name: subtitle, widget: string, required: false}
+              - name: items
+                label: "Items"
+                label_singular: "Item"
+                create: true
+                delete: true
+                widget: "list"
+                fields:
+                  - {label: Name, name: name, widget: string}
+                  - {label: Price, name: price, widget: number, pattern: ['\d+\.?\d*', "Must be a valid number, no $"], min: 0}
+                  - {label: Photo, name: src, widget: image, allow_multiple: false}
+          
