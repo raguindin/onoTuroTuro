@@ -1,14 +1,10 @@
 <script>
     import MenuItem from "elements/MenuItem.svelte"
-
     // menu.json is populated from the CMS
-    import menu from "../../public/content/menu.json"
-    
+    import menu from "../../public/content/menu.json"    
     // Example of sections: Combo Plates, Additional Items
     const sections = menu.sections;
 </script>
-
-
 
 {#each sections as section}
     <div class="menu-section">
@@ -31,9 +27,6 @@
 
 
 <style>
-    /* TODO: Improve menu styles and responsiveness */
-
-
     div.menu-section {
         text-align: center;
         margin-bottom: 6em;
