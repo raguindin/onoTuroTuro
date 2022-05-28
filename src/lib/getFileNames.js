@@ -1,6 +1,6 @@
 const fs = require("fs/promises");
 
-const folders = ["menu", "calendar"];
+const folders = ["combos", "additionalmenu", "calendar"];
 
 let fileNames = {};
 
