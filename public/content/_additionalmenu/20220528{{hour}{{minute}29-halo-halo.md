@@ -1,6 +1,0 @@
----
-active: true
-title: Halo Halo
-price: 4
-thumbnail: media/uploads/halo-halo.jpg
----

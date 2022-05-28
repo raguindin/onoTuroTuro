@@ -1,20 +1,20 @@
 <script>
-  import Header from './components/Header.svelte';
-  import Nav from './components/Nav.svelte';
-  import Menu from './components/Menu.svelte';
-  import Calendar from './components/Calendar.svelte';
-  import OurStory from './components/OurStory.svelte';
-  import { onMount } from 'svelte';
-  import content from './lib/filenames.json';
+  import Header from "./components/Header.svelte";
+  import Nav from "./components/Nav.svelte";
+  import Menu from "./components/Menu.svelte";
+  import Calendar from "./components/Calendar.svelte";
+  import OurStory from "./components/OurStory.svelte";
+  import { onMount } from "svelte";
+  import filenames from "./lib/filenames.json";
 
   // icons
-  import { Facebook, Mail } from 'lucide-svelte';
+  import { Facebook, Mail } from "lucide-svelte";
   // svelte bindings
   let menu = {};
   let calendar = {};
   let ourStory = {};
-  let stickyTop = 'min(4em, 40vh)';
-  const navHeight = '345px';
+  let stickyTop = "min(4em, 40vh)";
+  const navHeight = "345px";
   let sectionTopPositions = [];
 
   onMount(() => {
@@ -27,13 +27,13 @@
 
   const socials = [
     {
-      name: 'Facebook',
-      href: 'https://www.facebook.com/onoturoturo/',
+      name: "Facebook",
+      href: "https://www.facebook.com/onoturoturo/",
       icon: Facebook,
     },
     {
-      name: 'Email',
-      href: 'onoturoturo@gmail.com',
+      name: "Email",
+      href: "onoturoturo@gmail.com",
       icon: Mail,
     },
   ];
@@ -46,7 +46,8 @@
     --subtitle-text-color="var(--text-green)"
     --banner-top-color="var(--primary-green)"
     --banner-middle-color="var(--primary-red)"
-    --banner-bottom-color="var(--primary-blue)" />
+    --banner-bottom-color="var(--primary-blue)"
+  />
 </header>
 
 <aside style="top: {stickyTop}">
@@ -55,18 +56,21 @@
     --nav-active-item-background-color="#f7e5ab"
     --nav-active-item-text-color="var(--text-red)"
     --nav-inactive-item-text-color="var(--text-blue)"
-    {sectionTopPositions} />
+    {sectionTopPositions}
+  />
 </aside>
 
 <main>
   <section id="menu" bind:this={menu}>
     <Menu
+      menuFiles={filenames.menu}
       --section-title-text-color="var(--text-red)"
       --section-title-font="var(--sans)"
       --section-subtitle-text-color="var(--text-green)"
       --section-subtitle-font="var(--sans)"
       --item-text-color="var(--text-blue)"
-      --item-font="var(--serif)" />
+      --item-font="var(--serif)"
+    />
   </section>
 
   <section id="calendar" bind:this={calendar}><Calendar /></section>
@@ -87,7 +91,8 @@
             alt={social.name}
             size="100%"
             color="var(--social-text-color)"
-            strokeWidth="1" />
+            strokeWidth="1"
+          />
         </div>
       </a>
     {/each}

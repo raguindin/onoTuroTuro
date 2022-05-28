@@ -1,8 +1,13 @@
 <script>
-  import MenuItem from 'elements/MenuItem.svelte';
+  export let menuFiles = [];
+
+  for (fileName of menuFiles) {
+  }
+
+  import MenuItem from "elements/MenuItem.svelte";
 
   // menu.json is populated from the CMS
-  import menu from '../../public/content/menu.json';
+  import menu from "../../public/content/menu.json";
   const sections = menu.sections;
 </script>
 
@@ -19,7 +24,8 @@
         <MenuItem
           name={foodItem.name}
           price={foodItem.price}
-          src={foodItem.src} />
+          src={foodItem.src}
+        />
       {/each}
     </ul>
   </div>

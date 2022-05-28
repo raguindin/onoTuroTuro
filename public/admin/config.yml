@@ -31,6 +31,7 @@ collections:
     label_singular: Item
     description: >
       Here you can add any menu items which aren't a combo plate!
+    extension: json
     folder: public/content/_additionalmenu
     slug: "{{year}}{{month}}{{day}}{{hour}{{minute}{{second}}-{{slug}}"
     summary: "{{title}}"
