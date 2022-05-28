@@ -3,3 +3,5 @@
 
 .DS_Store
 /src/media/
+# Local Netlify folder
+.netlify
