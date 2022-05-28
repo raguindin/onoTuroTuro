@@ -20,15 +20,10 @@ collections:
     create: true
     delete: true
     fields:
-        - { label: "Name", name: name, widget: string }
-        - { label: "Description", name: desc, widget: string, required: false }
-        - { label: "Price", name: price, widget: number, min: 0 }
-        - {
-            label: Photo,
-            name: thumbnail,
-            widget: image,
-            allow_multiple: false,
-          }
+      - { label: "Name", name: title, widget: string }
+      - { label: "Description", name: desc, widget: string, required: false }
+      - { label: "Price", name: price, widget: number, min: 0 }
+      - { label: Photo, name: thumbnail, widget: image, allow_multiple: false }
 
   - name: additionalmenu
     label: Additional Menu Items
@@ -41,15 +36,10 @@ collections:
     create: true
     delete: true
     fields:
-        - { label: "Name", name: name, widget: string }
-        - { label: "Description", name: desc, widget: string, required: false }
-        - { label: "Price", name: price, widget: number, min: 0 }
-        - {
-            label: Photo,
-            name: thumbnail,
-            widget: image,
-            allow_multiple: false,
-          }
+      - { label: "Name", name: title, widget: string }
+      - { label: "Description", name: desc, widget: string, required: false }
+      - { label: "Price", name: price, widget: number, min: 0 }
+      - { label: Photo, name: thumbnail, widget: image, allow_multiple: false }
 
   - name: calendar
     label: Calendar
