@@ -15,11 +15,12 @@ collections:
       You can enable and disable existing items by opening them and clicking the "Active" checkbox.
     extension: json
     folder: public/content/_combos
-    slug: "{{year}}{{month}}{{day}}{{hour}{{minute}{{second}}-{{slug}}"
+    slug: "{{year}}{{month}}{{day}}-{{title}}"
     summary: "{{title}}"
     create: true
     delete: true
     fields:
+      - { label: Active, name: active, widget: boolean }
       - { label: "Name", name: title, widget: string }
       - { label: "Description", name: desc, widget: string, required: false }
       - { label: "Price", name: price, widget: number, min: 0 }
@@ -36,6 +37,7 @@ collections:
     create: true
     delete: true
     fields:
+      - { label: Active, name: active, widget: boolean }
       - { label: "Name", name: title, widget: string }
       - { label: "Description", name: desc, widget: string, required: false }
       - { label: "Price", name: price, widget: number, min: 0 }
@@ -50,6 +52,7 @@ collections:
     folder: public/content/_calendar
     slug: "{{fields.eventdate}}-{{starttime}}-{{name}}"
     summary: "{{fields.eventdate}} at {{starttime}} - {{name}}"
+    filter: { field: eventdate, value }
     create: true
     delete: true
     # TODO: add filter to hide past events
