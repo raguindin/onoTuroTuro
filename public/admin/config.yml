@@ -20,7 +20,13 @@ collections:
     create: true
     delete: true
     fields:
-      - { label: Active, name: active, widget: boolean }
+      - {
+          label: Active,
+          name: active,
+          widget: boolean,
+          default: true,
+          required: false,
+        }
       - { label: "Name", name: title, widget: string }
       - { label: "Description", name: desc, widget: string, required: false }
       - { label: "Price", name: price, widget: number, min: 0 }
@@ -38,7 +44,13 @@ collections:
     create: true
     delete: true
     fields:
-      - { label: Active, name: active, widget: boolean }
+      - {
+          label: Active,
+          name: active,
+          widget: boolean,
+          default: true,
+          required: false,
+        }
       - { label: "Name", name: title, widget: string }
       - { label: "Description", name: desc, widget: string, required: false }
       - { label: "Price", name: price, widget: number, min: 0 }
