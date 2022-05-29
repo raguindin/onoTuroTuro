@@ -147,14 +147,14 @@ collections:
             }
           - {
               label: "Combo Items Subtitle",
-              name: comboTitle,
+              name: comboSubtitle,
               hint: "WARNING: change with caution!",
               widget: string,
               default: "Comes with macaroni salad and choice of fried rice or rice noodles",
             }
           - {
               label: "Additional Items Title",
-              name: comboTitle,
+              name: additionalTitle,
               hint: "WARNING: change with caution!",
               widget: string,
               default: "Additional Items",
