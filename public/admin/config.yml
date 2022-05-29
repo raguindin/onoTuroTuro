@@ -115,19 +115,19 @@ collections:
             }
           - {
               label: "Site Subtitle",
-              name: title,
+              name: subtitle,
               widget: string,
               default: "Hawaiian-Filipino Food Truck",
             }
           - {
               label: "Location",
-              name: title,
+              name: location,
               widget: string,
               default: "Gahanna, OH",
             }
           - {
               label: "Phone/Contant",
-              name: title,
+              name: contact,
               widget: string,
               default: "614-403-8051",
               required: false,
