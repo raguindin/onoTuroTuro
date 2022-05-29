@@ -39,7 +39,7 @@ collections:
       Here you can add any menu items which aren't a combo plate!
     extension: json
     folder: public/content/_additionalmenu
-    slug: "{{year}}{{month}}{{day}}{{hour}{{minute}{{second}}-{{slug}}"
+    slug: "{{year}}{{month}}{{day}}-{{title}}"
     summary: "{{title}}"
     create: true
     delete: true
@@ -148,7 +148,7 @@ collections:
         label: "Menu Settings"
         create: false
         delete: false
-        file: "public/content/menu-settings.json"
+        file: "public/content/menusettings.json"
         fields:
           - {
               label: "Combo Items Title",
@@ -175,11 +175,11 @@ collections:
         label: "Our Story"
         create: false
         delete: false
-        file: "public/content/our-story.json"
+        file: "public/content/ourstory.json"
         fields:
           - {
               label: "Our Story",
               hint: "The story of Ono Turo-Turo. Leave blank to hide from site",
-              name: comboTitle,
+              name: outstory,
               widget: markdown,
             }

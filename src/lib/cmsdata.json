@@ -1,1 +1,52 @@
-{"combos":[{"active":true,"title":"Chicken Katsu","price":10,"thumbnail":"media/uploads/chicken-katsu.jpg"},{"active":true,"title":"Teriyaki Chicken","price":10,"thumbnail":"media/uploads/teriyaki-chicken.jpg"},{"title":"Test Inactive","price":1,"thumbnail":"media/uploads/shrimp-tempura.jpg","active":false}],"additionalmenu":[],"calendar":[{"eventdate":"2022-05-13","starttime":"11:00","endtime":"18:00","name":"Test Event","address":"152 Mill St, Columbus, OH 43230","body":"We'll be here, at the **Gahanna Plant Library!**"},{"eventdate":"2022-05-14","starttime":"11:00","endtime":"18:00","name":"Test Event","address":"152 Mill St, Columbus, OH 43230","body":"We'll be here, at the **Gahanna Plant Library!**"},{"eventdate":"2022-05-16","starttime":"12:00","endtime":"13:00","name":"Test Event Office","address":"230 West Street Suite 550 Columbus OH 43215","body":"We'll be visiting the employees of Business!"},{"eventdate":"2022-05-20","starttime":"9:00","endtime":"17:00","name":"Test Big Event","address":"Ohio State Fair","body":"Join us at the Food Truck Festival!"}]}
+{
+  "combos": [
+    {
+      "active": true,
+      "title": "Chicken Katsu",
+      "price": 10,
+      "thumbnail": "media/uploads/chicken-katsu.jpg"
+    },
+    {
+      "active": true,
+      "title": "Teriyaki Chicken",
+      "price": 10,
+      "thumbnail": "media/uploads/teriyaki-chicken.jpg"
+    },
+    {
+      "title": "Test Inactive",
+      "price": 1,
+      "thumbnail": "media/uploads/shrimp-tempura.jpg",
+      "active": false
+    }
+  ],
+  "additionalmenu": [
+    {
+      "active": true,
+      "title": "Halo-Halo",
+      "price": 10,
+      "thumbnail": "media/uploads/halo-halo.jpg"
+    }
+  ],
+  "calendar": [
+    {
+      "eventdate": "2022-05-29",
+      "starttime": "15:00",
+      "endtime": "18:00",
+      "name": "Upcoming Event",
+      "address": "Creekside Gahanna",
+      "body": "We will be at Creekside! Check us out!"
+    }
+  ],
+  "menusettings": {
+    "comboTitle": "Combo Items",
+    "comboSubtitle": "Comes with macaroni salad and choice of fried rice or rice noodles",
+    "additionalTitle": "Additional Items"
+  },
+  "ourstory": { "ourstory": "*Story of the food truck* will go **here**" },
+  "settings": {
+    "title": "Ono Turo-Turo",
+    "subtitle": "Hawaiian-Filipino Food Truck",
+    "location": "Gahanna, OH",
+    "contact": "onoturoturo@gmail.com"
+  }
+}

@@ -1,14 +1,10 @@
 <script>
-  export let menuData = {};
-
-  // for (fileName of menuFiles) {
-  // }
-
   import MenuItem from "elements/MenuItem.svelte";
-
-  // menu.json is populated from the CMS
   import menu from "../../public/content/menu.json";
-  const sections = menu.sections;
+
+  let isEmpty = false;
+  export let menuData = {};
+  const sections = Object.keys(menuData).map((key) => menuData[key]);
 </script>
 
 {#each sections as section}
@@ -21,19 +17,22 @@
     {/if}
     <ul class="menu-container">
       {#each section.items as foodItem}
-        <MenuItem
-          name={foodItem.name}
-          price={foodItem.price}
-          src={foodItem.src}
-        />
+        {#if foodItem.active}
+          <MenuItem
+            name={foodItem.title}
+            price={foodItem.price}
+            src={foodItem.thumbnail}
+          />
+        {/if}
       {/each}
+      {#if !section.items.some((item) => item.active)}
+        <h4>Check back soon as we add more items!</h4>
+      {/if}
     </ul>
   </div>
 {/each}
 
 <style>
-  /* TODO: Improve menu styles and responsiveness */
-
   div.menu-section {
     text-align: center;
     margin-bottom: 6em;

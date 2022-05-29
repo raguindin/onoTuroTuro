@@ -6,10 +6,19 @@
   import OurStory from "./components/OurStory.svelte";
   import { onMount } from "svelte";
   import CMSData from "./lib/cmsdata.json";
+  // import CMSData from "./lib/bundleContent.cjs";
 
   const menuData = {
-    combos: CMSData.combos,
-    additionalmenu: CMSData.additionalmenu,
+    combos: {
+      title: CMSData.menusettings.comboTitle,
+      subtitle: CMSData.menusettings.comboSubtitle,
+      items: CMSData.combos,
+    },
+    additionalmenu: {
+      title: CMSData.menusettings.additionalTitle,
+      subtitle: null,
+      items: CMSData.additionalmenu,
+    },
   };
   const calendarData = CMSData.calendar;
 
@@ -79,7 +88,9 @@
     />
   </section>
 
-  <section id="calendar" bind:this={calendar}><Calendar /></section>
+  <section id="calendar" bind:this={calendar} {calendarData}>
+    <Calendar />
+  </section>
   <section id="our-story" bind:this={ourStory}>
     <OurStory --bio-font="var(--serif)" --bio-text-color="var(--text-red)" />
   </section>
