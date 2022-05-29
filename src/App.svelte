@@ -5,7 +5,13 @@
   import Calendar from "./components/Calendar.svelte";
   import OurStory from "./components/OurStory.svelte";
   import { onMount } from "svelte";
-  import filenames from "./lib/filenames.json";
+  import CMSData from "./lib/cmsdata.json";
+
+  const menuData = {
+    combos: CMSData.combos,
+    additionalmenu: CMSData.additionalmenu,
+  };
+  const calendarData = CMSData.calendar;
 
   // icons
   import { Facebook, Mail } from "lucide-svelte";
@@ -63,7 +69,7 @@
 <main>
   <section id="menu" bind:this={menu}>
     <Menu
-      menuFiles={filenames.menu}
+      {menuData}
       --section-title-text-color="var(--text-red)"
       --section-title-font="var(--sans)"
       --section-subtitle-text-color="var(--text-green)"

@@ -8,7 +8,6 @@ import { sveltePreprocess } from "svelte-preprocess/dist/autoProcess";
 import InlineSvg from "rollup-plugin-inline-svg";
 import alias from "@rollup/plugin-alias";
 import json from "@rollup/plugin-json";
-import merge from "rollup-plugin-json-merge";
 
 const production = !process.env.ROLLUP_WATCH;
 
@@ -87,21 +86,6 @@ export default {
           replacement: "../dependencies",
         },
       ],
-    }),
-    merge({
-      input: ["public/content/_combos/*.json"],
-      fileName: "combos.json",
-      merge: (items) => items,
-    }),
-    merge({
-      input: ["public/content/_additionalmenu/*.json"],
-      fileName: "additionalmenu.json",
-      merge: (items) => items,
-    }),
-    merge({
-      input: ["public/content/_calendar/*.json"],
-      fileName: "calendar.json",
-      merge: (items) => items,
     }),
     json(),
 

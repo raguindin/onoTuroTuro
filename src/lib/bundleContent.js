@@ -1,21 +1,33 @@
-const fs = require("fs/promises");
+const fs = require("fs");
 
 const folders = ["combos", "additionalmenu", "calendar"];
 
-let fileNames = {};
+let content = {};
+let files = [];
+let folder;
+let fileObjs;
+let dirent;
 
-const readFiles = async () => {
-  for (let folder of folders) {
-    fileNames[folder] = await fs.readdir(`public/content/_${folder}`, () => {
-      
-    });
-  }
-};
-
-readFiles().then(() => {
-  let data = JSON.stringify(fileNames);
-  fs.writeFile("src/lib/filenames.json", data, (err) => {
-    if (err) throw err;
-    console.log("Data written to file");
+for (folder of folders) {
+  dirent = fs.readdirSync(`public/content/_${folder}`, {
+    withFileTypes: true,
   });
+  files = dirent
+    .filter((dirent) => dirent.isFile())
+    .map((dirent) => dirent.name);
+  fileObjs = [];
+  files.forEach((file) => {
+    // console.log(file);
+    let rawdata = fs.readFileSync(`public/content/_${folder}/${file}`);
+    let fileObj = JSON.parse(rawdata);
+    fileObjs.push(fileObj);
+  });
+  content[folder] = fileObjs;
+}
+
+let data = JSON.stringify(content);
+
+fs.writeFileSync("src/lib/CMSData.json", data, (err) => {
+  if (err) throw err;
+  else console.log("Data written to file");
 });

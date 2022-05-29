@@ -56,7 +56,6 @@ collections:
     filter: { field: eventdate, value }
     create: true
     delete: true
-    # TODO: add filter to hide past events
     fields:
       - {
           label: Name,
@@ -104,7 +103,71 @@ collections:
     files:
       - name: settings
         label: "Settings"
+        create: false
         delete: false
         file: "public/content/settings.json"
         fields:
-          - { label: "Section Title", name: title, widget: string }
+          - {
+              label: "Site Title",
+              name: title,
+              widget: string,
+              default: "Ono Turo-Turo",
+            }
+          - {
+              label: "Site Subtitle",
+              name: title,
+              widget: string,
+              default: "Hawaiian-Filipino Food Truck",
+            }
+          - {
+              label: "Location",
+              name: title,
+              widget: string,
+              default: "Gahanna, OH",
+            }
+          - {
+              label: "Phone/Contant",
+              name: title,
+              widget: string,
+              default: "614-403-8051",
+              required: false,
+            }
+      - name: menuSetting
+        label: "Menu Settings"
+        create: false
+        delete: false
+        file: "public/content/menu-settings.json"
+        fields:
+          - {
+              label: "Combo Items Title",
+              name: comboTitle,
+              hint: "WARNING: change with caution!",
+              widget: string,
+              default: "Combo Items",
+            }
+          - {
+              label: "Combo Items Subtitle",
+              name: comboTitle,
+              hint: "WARNING: change with caution!",
+              widget: string,
+              default: "Comes with macaroni salad and choice of fried rice or rice noodles",
+            }
+          - {
+              label: "Additional Items Title",
+              name: comboTitle,
+              hint: "WARNING: change with caution!",
+              widget: string,
+              default: "Additional Items",
+            }
+      - name: ourstory
+        label: "Our Story"
+        create: false
+        delete: false
+        file: "public/content/our-story.json"
+        fields:
+          - {
+              label: "Our Story",
+              hint: "The story of Ono Turo-Turo. Leave blank to hide from site",
+              name: comboTitle,
+              widget: markdown,
+            }

@@ -1,8 +1,8 @@
 <script>
-  export let menuFiles = [];
+  export let menuData = {};
 
-  for (fileName of menuFiles) {
-  }
+  // for (fileName of menuFiles) {
+  // }
 
   import MenuItem from "elements/MenuItem.svelte";
 
