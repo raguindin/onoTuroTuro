@@ -9,9 +9,19 @@ let fileObjs;
 let dirent;
 
 for (folder of folders) {
-  dirent = fs.readdirSync(`public/content/_${folder}`, {
-    withFileTypes: true,
-  });
+  try {
+    dirent = fs.readdirSync(`public/content/_${folder}`, {
+      withFileTypes: true,
+    });
+  } catch (err) {
+    if (err.code === "ENOENT") {
+      console.log(`Folder "${folder}" not found, continuing...`);
+      content[folder] = [];
+      continue;
+    } else {
+      throw err;
+    }
+  }
   files = dirent
     .filter((dirent) => dirent.isFile())
     .map((dirent) => dirent.name);
@@ -29,5 +39,6 @@ let data = JSON.stringify(content);
 
 fs.writeFileSync("src/lib/CMSData.json", data, (err) => {
   if (err) throw err;
-  else console.log("Data written to file");
 });
+
+console.log("Data written to file");
