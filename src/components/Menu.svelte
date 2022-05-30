@@ -1,8 +1,6 @@
 <script>
   import MenuItem from "elements/MenuItem.svelte";
-  import menu from "../../public/content/menu.json";
 
-  let isEmpty = false;
   export let menuData = {};
   const sections = Object.keys(menuData).map((key) => menuData[key]);
 </script>
