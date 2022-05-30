@@ -12,30 +12,25 @@
 
   let activeSectionIndex = null;
   export let sectionTopPositions = [];
+  export let menuButtonActive = false;
 
   let viewportHeight;
   let scrollPositionY = 0;
   let activeSectionOffset = 200;
+  let canScrollChangeSection = true;
 
-  // $: sectionTopPositions.forEach( (offsetTop, index) => {
-  //     if (scrollPositionY > 10 && index === 0) {
-  //         activeSectionIndex = index;
-  //     } else if (scrollPositionY + activeSectionOffset > offsetTop) {
-  //         activeSectionIndex = index;
-  //     }
-  // })
-
-  $: activeSectionIndex =
-    sectionTopPositions.length -
-    1 -
-    sectionTopPositions
-      .slice()
-      .reverse()
-      .findIndex((offsetTop, index, arr) => {
-        if (scrollPositionY > 10 && index === arr.length - 1) return true;
-        if (scrollPositionY + activeSectionOffset > offsetTop) return true;
-        return false;
-      });
+  $: if (canScrollChangeSection)
+    activeSectionIndex =
+      sectionTopPositions.length -
+      1 -
+      sectionTopPositions
+        .slice()
+        .reverse()
+        .findIndex((offsetTop, index, arr) => {
+          if (scrollPositionY > 10 && index === arr.length - 1) return true;
+          if (scrollPositionY + activeSectionOffset > offsetTop) return true;
+          return false;
+        });
 
   // Below determines when the next approaching section is on screen
   let nextSectionApproaching = false;
@@ -48,6 +43,15 @@
   } else {
     nextSectionApproaching = false;
   }
+
+  const handleClick = (index) => {
+    menuButtonActive = false;
+    canScrollChangeSection = false;
+    setTimeout(() => {
+      canScrollChangeSection = true;
+    }, 200);
+    activeSectionIndex = index;
+  };
 </script>
 
 <svelte:window
@@ -58,10 +62,9 @@
 <nav>
   <ul>
     {#each sections as section, index}
-      <a href="#{section_ids[index]}">
+      <a href="#{section_ids[index]}" on:click={() => handleClick(index)}>
         <li
           id={index}
-          on:click={() => (activeSectionIndex = index)}
           class={index === activeSectionIndex
             ? "isActive"
             : index === nextSectionIndex && nextSectionApproaching

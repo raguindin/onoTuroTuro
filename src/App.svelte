@@ -85,6 +85,7 @@
     --nav-active-item-text-color="var(--text-red)"
     --nav-inactive-item-text-color="var(--text-blue)"
     {sectionTopPositions}
+    bind:menuButtonActive
   />
 </aside>
 
@@ -337,15 +338,16 @@
     button.hamburger {
       display: flex;
     }
-    
+
     aside {
       position: fixed;
       display: block;
       width: 100vw;
+      height: 100vh;
       top: 0;
       left: 0;
-      transform: translateX(-100vw);
-      transition: transform 1s;
+      transform: translateX(-120vw);
+      transition: transform 300ms;
     }
 
     aside.visible {
@@ -354,9 +356,11 @@
     }
 
     aside::before {
-      background: var(--background-color);
+      position: absolute;
+      background-color: var(--background-color);
       background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(255, 251, 240, 0.3) 100%);
       width: 100%;
+      top: -4em;
     }
 
 }
