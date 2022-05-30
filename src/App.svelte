@@ -70,6 +70,8 @@
   <button
     class="hamburger {menuButtonActive ? 'active' : 'not-active'}"
     on:click={() => (menuButtonActive = !menuButtonActive)}
+    aria-label="Open Navigation Menu"
+    tabindex="0"
     hidden
   >
     <span />
@@ -120,7 +122,7 @@
   <h5>Follow us!</h5>
   <div class="social-media-container">
     {#each socials as social}
-      <a href={social.href}>
+      <a href={social.href} aria-label={social.name}>
         <div class="icon-wrapper">
           <svelte:component
             this={social.icon}
@@ -146,7 +148,7 @@
 		--primary-blue: hsl(234, 21%, 48%);
 		--primary-red: hsl(7, 45%, 42%);
 		--primary-yellow: hsl(45, 78%, 65%);
-		--background-color: hsl(46, 100%, 93%);
+		--background-color: hsl(47, 100%, 93%);
 		--background-light: hsl(46, 100%, 97%);
 
 		/* Slightly adjusted colors for text */

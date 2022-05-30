@@ -62,7 +62,11 @@
 <nav>
   <ul>
     {#each sections as section, index}
-      <a href="#{section_ids[index]}" on:click={() => handleClick(index)}>
+      <a
+        href="#{section_ids[index]}"
+        tabindex={index + 1}
+        on:click={() => handleClick(index)}
+      >
         <li
           id={index}
           class={index === activeSectionIndex
