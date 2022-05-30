@@ -25,6 +25,11 @@
   const siteSettings = CMSData.settings;
   let menuButtonActive = false;
 
+  const sections =
+    ourStoryData.body !== ""
+      ? ["Menu", "Calendar", "Our Story"]
+      : ["Menu", "Calendar"];
+
   // icons
   import { Facebook, Mail } from "lucide-svelte";
   // svelte bindings
@@ -87,6 +92,7 @@
     --nav-active-item-text-color="var(--text-red)"
     --nav-inactive-item-text-color="var(--text-blue)"
     {sectionTopPositions}
+    {sections}
     bind:menuButtonActive
   />
 </aside>

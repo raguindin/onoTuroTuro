@@ -1,5 +1,5 @@
 <script>
-  const sections = ["Menu", "Calendar", "Our Story"];
+  export let sections;
   class Section {
     constructor(_name, _topPos) {
       this.name = _name;
@@ -49,7 +49,7 @@
     canScrollChangeSection = false;
     setTimeout(() => {
       canScrollChangeSection = true;
-    }, 200);
+    }, 500);
     activeSectionIndex = index;
   };
 </script>
