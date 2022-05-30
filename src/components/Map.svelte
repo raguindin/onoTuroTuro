@@ -16,7 +16,7 @@
     let zoomLevel = "16.3";
     let width = "600";
     let height = "600";
-    let truckIcon = "https://cdn-icons-png.flaticon.com/32/1046/1046762.png";
+    let truckIcon = "https://cdn-icons-png.flaticon.com/64/1046/1046762.png";
     let imgSrc = `https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/url-${encodeURIComponent(
       truckIcon
     )}(${coordStr})/${coordStr},${zoomLevel},0/${width}x${height}?access_token=${mapboxApiKey}`;
@@ -31,7 +31,7 @@
       src={value.imgSrc}
       alt="Map of {addressText}"
       width="100%"
-      height="100%"
+      height="auto"
     /></a
   >
 {/await}
