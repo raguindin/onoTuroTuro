@@ -1,21 +1,23 @@
 <script>
   import SvelteMarkdown from "svelte-markdown";
-  export let ourStoryText = "";
+  export let ourStoryData = {};
 </script>
 
 <div class="section-wrapper">
   <h3>Our Story</h3>
   <div class="flex-wrapper">
-    <figure>
-      <img
-        src="https://luke-shafer-web-design.mo.cloudinary.net/onoturoturo/media/family.png?tx=c_scale,w_432"
-        alt="Our family"
-      />
-      <figcaption>Our Family</figcaption>
-    </figure>
+    {#if ourStoryData.thumbnail !== ""}
+      <figure>
+        <img
+          src="https://luke-shafer-web-design.mo.cloudinary.net/onoturoturo/{ourStoryData.thumbnail}?tx=c_scale,w_432"
+          alt="Our family"
+        />
+        <figcaption>Our Family</figcaption>
+      </figure>
+    {/if}
     <div class="bio-wrapper">
       <p>
-        <SvelteMarkdown source={ourStoryText} />
+        <SvelteMarkdown source={ourStoryData.body} />
       </p>
       <!-- <p>{ourStoryText}</p> -->
     </div>

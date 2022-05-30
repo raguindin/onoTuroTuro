@@ -180,6 +180,14 @@ collections:
           - {
               label: "Our Story",
               hint: "The story of Ono Turo-Turo. Leave blank to hide from site",
-              name: outstory,
+              name: body,
               widget: markdown,
+              required: false,
+            }
+          - {
+              label: "Photo",
+              hint: "Can be a family photo, or whatever you'd like!",
+              name: thumbnail,
+              widget: image,
+              required: false,
             }

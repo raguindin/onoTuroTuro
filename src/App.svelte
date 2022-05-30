@@ -21,7 +21,7 @@
     },
   };
   const calendarData = CMSData.calendar;
-  const ourStoryText = CMSData.ourstory.ourstory;
+  const ourStoryData = CMSData.ourstory;
   const siteSettings = CMSData.settings;
   let menuButtonActive = false;
 
@@ -105,10 +105,10 @@
   <section id="calendar" bind:this={calendar}>
     <Calendar {calendarData} />
   </section>
-  {#if ourStoryText !== ""}
+  {#if ourStoryData.body !== ""}
     <section id="our-story" bind:this={ourStory}>
       <OurStory
-        {ourStoryText}
+        {ourStoryData}
         --bio-font="var(--serif)"
         --bio-text-color="var(--text-red)"
       />
