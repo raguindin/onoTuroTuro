@@ -5,3 +5,6 @@
 /src/media/
 # Local Netlify folder
 .netlify
+
+# Results of pre-build script
+/src/lib/cmsdata.json
