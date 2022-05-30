@@ -4,50 +4,59 @@
   import daygridPlugin from "@fullcalendar/daygrid";
   import interactionPlugin from "@fullcalendar/interaction";
   import Map from "./Map.svelte";
+  import { DateTime } from "luxon";
 
   export let calendarData;
 
-  // import event1 from "../../public/content/_calendar/2022-05-13-11-00-test-event.json";
-  // import event2 from "../../public/content/_calendar/2022-05-14-11-00-test-event-2.json";
-  // import event3 from "../../public/content/_calendar/2022-05-16-11-00-test-event-3.json";
-  // import event4 from "../../public/content/_calendar/2022-05-20-11-00-test-event-4.json";
-
-  const calendarEvents = [];
+  const calendarEvents = calendarData.slice().map((event) => {
+    return {
+      title: event.name,
+      date: event.eventdate,
+    };
+  });
 
   let calendarRef;
   let addressText;
+  let currentDate = DateTime.now().toISO().slice(0, 10);
+  let todaysCalendarEvents;
 
-  // TODO: Calendar styles  -  https://fullcalendar.io/docs/css-customization
-  // TODO: clicking date/event opens the relevant map location (if applicable)
-  // TODO: determine functionality for when there is no event on a day
+  const formatDate = (date) => {
+    let dateArray = date.split("-");
+    return dateArray.concat([dateArray.shift()]).join("/");
+  };
 
-  // populate calendar with events in the _calendar folder
+  const formatTime = (time) => {
+    let [hhbig, mm] = time.split(":");
+    let hh = ((parseInt(hhbig) + 11) % 12) + 1;
+    let ampm = parseInt(hhbig) < 12 ? "A.M." : "P.M.";
+    return `${hh}:${mm} ${ampm}`;
+  };
 
-  function handleClick(event) {
-    const calendarAPI = calendarRef.getAPI();
-    const date = event.dateStr;
-    calendarAPI.select(date);
-    const todaysCalendarEvents = calendarEvents.filter(
-      (calendarEvent) => calendarEvent.eventdate === event.dateStr
+  const refreshDateInfo = (date) => {
+    todaysCalendarEvents = calendarData.filter(
+      (calendarEvent) => calendarEvent.eventdate === date
     );
     if (todaysCalendarEvents.length > 0) {
       addressText = todaysCalendarEvents[0].address;
+    } else {
+      addressText = "";
     }
-  }
+  };
+
+  $: refreshDateInfo(currentDate);
+
+  const handleClick = (event) => {
+    const calendarAPI = calendarRef.getAPI();
+    currentDate = event.dateStr;
+    calendarAPI.select(currentDate);
+  };
 
   const options = {
     dateClick: handleClick,
-    events: [
-      // { title: event1.name, date: event1.eventdate },
-      // { title: event2.name, date: event2.eventdate },
-      // { title: event3.name, date: event3.eventdate },
-      // { title: event4.name, date: event4.eventdate },
-    ],
+    events: calendarEvents,
     initialView: "dayGridMonth",
     plugins: [daygridPlugin, interactionPlugin],
   };
-
-  // debugger;
 </script>
 
 <div class="section-wrapper">
@@ -57,9 +66,31 @@
       <FullCalendar bind:this={calendarRef} {options} />
     </div>
 
-    <div class="map-wrapper">
-      <Map {addressText} />
+    <div class="event-info-wrapper">
+      <h4>Events for {formatDate(currentDate)}</h4>
+      {#if todaysCalendarEvents.length > 0}
+        {#each todaysCalendarEvents as event}
+          <h5>
+            {event.name}
+          </h5>
+          <h6>
+            <time>
+              {formatTime(event.starttime)} - {formatTime(event.endtime)}
+            </time>
+            <address>At {event.address}</address>
+          </h6>
+          <p>{event.body}</p>
+        {/each}
+      {:else}
+        <h5>No events today!</h5>
+      {/if}
     </div>
+    {#if todaysCalendarEvents.length > 0}
+      <div class="map-wrapper">
+        <!-- {addressText} -->
+        <Map {addressText} />
+      </div>
+    {/if}
   </div>
 </div>
 
@@ -81,12 +112,26 @@
   }
 
   .calendar-wrapper {
-    width: 35em;
-    height: 35em;
+    width: 30em;
+    height: auto;
+  }
+
+  .event-info-wrapper {
+    width: 20em;
+    text-align: center;
+    font-size: 1.8em;
+  }
+
+  .event-info-wrapper :is(h5, h6, p) {
+    margin: 1em;
+  }
+
+  .event-info-wrapper p {
+    font-size: 0.6em;
   }
 
   .map-wrapper {
-    width: 35em;
+    width: 30em;
     height: 30em;
     background: lightblue;
   }

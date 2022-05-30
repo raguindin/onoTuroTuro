@@ -21,6 +21,9 @@
     },
   };
   const calendarData = CMSData.calendar;
+  const ourStoryText = CMSData.ourstory.ourstory;
+  const siteSettings = CMSData.settings;
+  let menuButtonActive = false;
 
   // icons
   import { Facebook, Mail } from "lucide-svelte";
@@ -56,6 +59,7 @@
 
 <header>
   <Header
+    {siteSettings}
     --address-text-color="var(--text-blue)"
     --title-text-color="hsl(48, 100%, 99%)"
     --subtitle-text-color="var(--text-green)"
@@ -63,9 +67,18 @@
     --banner-middle-color="var(--primary-red)"
     --banner-bottom-color="var(--primary-blue)"
   />
+  <button
+    class="hamburger {menuButtonActive ? 'active' : 'not-active'}"
+    on:click={() => (menuButtonActive = !menuButtonActive)}
+    hidden
+  >
+    <span />
+    <span />
+    <span />
+  </button>
 </header>
 
-<aside style="top: {stickyTop}">
+<aside style="top: {stickyTop}" class:visible={menuButtonActive}>
   <Nav
     --nav-item-font="var(--sans)"
     --nav-active-item-background-color="#f7e5ab"
@@ -88,12 +101,18 @@
     />
   </section>
 
-  <section id="calendar" bind:this={calendar} {calendarData}>
-    <Calendar />
+  <section id="calendar" bind:this={calendar}>
+    <Calendar {calendarData} />
   </section>
-  <section id="our-story" bind:this={ourStory}>
-    <OurStory --bio-font="var(--serif)" --bio-text-color="var(--text-red)" />
-  </section>
+  {#if ourStoryText !== ""}
+    <section id="our-story" bind:this={ourStory}>
+      <OurStory
+        {ourStoryText}
+        --bio-font="var(--serif)"
+        --bio-text-color="var(--text-red)"
+      />
+    </section>
+  {/if}
 </main>
 
 <footer>
@@ -184,16 +203,16 @@
 	}
 
 	aside {
-        position: sticky;
+    position: sticky;
 		float: left;
-        width: var(--nav-width);
-        height: 100vh;
+    width: var(--nav-width);
+    height: 100vh;
 		z-index: 2;
-    }
+  }
 
 	aside::before {
-        background: var(--background-color);
-        background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%); 
+    background: var(--background-color);
+    background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%); 
 		position: fixed;
 		width: var(--nav-width);
 		top: 0;
@@ -228,6 +247,52 @@
 		padding-right: var(--footer-padding);
 		text-align: center;
 	}
+
+  button.hamburger {
+    position: fixed;
+    left: 1em;
+    top: 1em;
+    z-index: 4;
+    width: 4em;
+    height: 4em;
+    flex-direction: column;
+    justify-content: center;
+    border-style: none;
+    --line-spacing: 0.5em;
+    gap: var(--line-spacing);
+    padding: var(--line-spacing);
+    background-color: transparent;
+  }
+  button.hamburger:hover {
+    cursor: pointer;
+  }
+  button.hamburger:hover span {
+    filter: brightness(150%);
+    /* font-size: 2em; */
+  }
+  button.hamburger span {
+    display: block;
+    width: 3.2em;
+    text-align: center;
+    --line-height: 0.3em;
+    --translate-amount: calc(var(--line-spacing) + var(--line-height));
+    height: var(--line-height);
+    position: relative;
+    background-color: var(--primary-blue);
+    transform-origin: center;
+    transition: transform 250ms;
+  }
+  button.hamburger.active span:first-child {
+    transform: translateY(var(--translate-amount)) rotate(0.125turn);
+  }
+  button.hamburger.active span:last-child {
+    transform: translateY(calc(-1 * var(--translate-amount))) rotate(-0.125turn);
+  }
+  button.hamburger.active span {
+    background-color: var(--primary-red);
+    transform: scale(0, 1);
+  }
+
 
 	h5 {
 		color: var(--text-light);
@@ -268,9 +333,32 @@
 		:root {
 			--nav-width: 0;
 		}
-        aside {
-            display: none;
-        }
+
+    button.hamburger {
+      display: flex;
     }
+    
+    aside {
+      position: fixed;
+      display: block;
+      width: 100vw;
+      top: 0;
+      left: 0;
+      transform: translateX(-100vw);
+      transition: transform 1s;
+    }
+
+    aside.visible {
+      display: block;
+      transform: translateX(0vw);
+    }
+
+    aside::before {
+      background: var(--background-color);
+      background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(255, 251, 240, 0.3) 100%);
+      width: 100%;
+    }
+
+}
 
 </style>

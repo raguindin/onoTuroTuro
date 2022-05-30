@@ -33,7 +33,7 @@
       "starttime": "15:00",
       "endtime": "18:00",
       "name": "Upcoming Event",
-      "address": "Creekside Gahanna",
+      "address": "123 Mill St, Gahanna, OH 43230",
       "body": "We will be at Creekside! Check us out!"
     }
   ],
@@ -47,6 +47,6 @@
     "title": "Ono Turo-Turo",
     "subtitle": "Hawaiian-Filipino Food Truck",
     "location": "Gahanna, OH",
-    "contact": "onoturoturo@gmail.com"
+    "contact": "614-403-8051"
   }
 }
