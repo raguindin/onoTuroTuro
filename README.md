@@ -20,10 +20,3 @@ npm run dev
 ```
 
 and visit [localhost](http://localhost):8080 in your browser. 
-
-## Managing the site
-
-To access the Content Management System, or CMS, visit [onoturoturo.com/admin](http://onoturoturo.com/admin). From there, log in with whichever credentials
-
-<!-- Add credits, CMS instructions, and more installation/build instructions -->
-
