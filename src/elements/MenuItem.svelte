@@ -1,34 +1,36 @@
 <script>
-    export let name, price, src;
+  export let name, price, src;
 </script>
 
-    <li>
-        <img src="https://luke-shafer-web-design.mo.cloudinary.net/onoturoturo/{src}?tx=c_fill,g_auto,h_272,w_272" alt="">
-        <p> {name} <strong>${price}</strong></p>
-    </li>
+<li>
+  <img {src} alt="" />
+  <p>{name} <strong>${price}</strong></p>
+</li>
 
 <style>
-    li {
-        /* margin: auto; */
-        margin: 0;
-        width: 100%;
-    }
+  li {
+    /* margin: auto; */
+    margin: 0;
+    width: 100%;
+  }
 
-    img {
-        height: min(65vw, 17em);
-        width: min(65vw, 17em);
-        margin: auto;
-    }
+  img {
+    height: min(65vw, 17em);
+    width: min(65vw, 17em);
+    margin: auto;
 
-    p {
-        color: var(--item-text-color);
-        font-family: var(--item-font);
-        font-size: 1.5em;
-        text-transform: uppercase;
-        text-align: center;
-        margin-top: 0.2em;
-        /* width: 100%; */
-        letter-spacing: 1px;
-        /* font-weight: 10; */
-    }
+    object-fit: cover;
+  }
+
+  p {
+    color: var(--item-text-color);
+    font-family: var(--item-font);
+    font-size: 1.5em;
+    text-transform: uppercase;
+    text-align: center;
+    margin-top: 0.2em;
+    /* width: 100%; */
+    letter-spacing: 1px;
+    /* font-weight: 10; */
+  }
 </style>
